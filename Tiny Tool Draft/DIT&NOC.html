@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIT and NOC Calculator</title>
+    <link rel="stylesheet" href="main_style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href ="Home.html">Home</a> &nbsp;</li>
+            <li><a href="DIT&NOC.html">DIT & NOC</a> &nbsp;</li>
+            <li><a href="methods_attributes.html">Methods and Attributes</a> &nbsp;</li>
+            <li><a href ="WMC.html">WMC</a> &nbsp;</li>
+            <li><a href="RFC.html">RFC</a> &nbsp;</li>
+            <li><a href="LCM.html">LCM</a> &nbsp;</li>
+            <li><a href="CBO.html">CBO</a> &nbsp;</li>
+            <li><a href="help.html">Help</a> &nbsp;</li>
+        </ul>
+    </nav>
+    
+    <h2>DIT and NOC Calculator</h2>
+    <p>Description of Inheritance Tree and how DIT and NOC are calculated.</p>
+    <div id="treeBuilder">
+        <h3>Tree Builder</h3>
+        <form id="classForm">
+            <label for="className">Class Name:</label>
+            <input type="text" id="className" name="className" required>
+
+            <label for="parentClass">Select Parent Class:</label>
+            <select id="parentClass" name="parentClass">
+                <option value="">None (root class)</option>
+                <!-- Options added by JS -->
+            </select>
+
+            <button type="button" onclick="addClass()">+ Add Class</button>
+            <button type="button" onclick="removeClass()">- Remove Class</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
