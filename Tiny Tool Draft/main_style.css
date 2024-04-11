@@ -200,6 +200,60 @@ input, textarea {
     margin-bottom: 0.5em;
             }
 
+
+
+
+.help-container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.help-nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.help-nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.help-nav a {
+    text-decoration: none;
+    color: #2D3E4E;
+    font-weight: bold;
+}
+
+.help-nav a:hover {
+    color: #8CBDB9;
+}
+
+section {
+    margin-top: 20px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+
+
+
+
+
+
+
 /*@supports (display: grid) {
 form { display: grid;
        grid-template-columns: 6em 1fr;
