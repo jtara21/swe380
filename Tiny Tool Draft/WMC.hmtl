@@ -39,6 +39,7 @@
                 'Simple Method' just takes a count of how many methods your class has. The 'Complex Method' allows 
                 you to calculate the cyclomatic complexity of each method for your classes and input those values 
                 into the the calculator.</p>
+            <br>
             <p>If you decide to use the 'Simple Method', then you have no more work to do for this metric! If you 
                 decide to use the 'Complex Method', you'll need to calculate the cyclomatic complexity for each of 
                 your classes' methods. For a particular method, you'll need to consider the all the possible paths 
