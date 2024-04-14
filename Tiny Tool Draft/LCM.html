@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Lack of Cohesion of Methods</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width", initial-scale="1.0">
+<!--<meta name="description" content="Home page. Our Agency is here to show you how amazing is Senegal as a country. It really is a great place for tourism. ">-->
+<link rel="stylesheet" type="text/css" href="main_style.css"/>
+<script src="script.js"></script>
+<body>
+    <div id="main">
+        <header>
+            <h1><a href="Home.html">Lack of Cohesion of Methods</a></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href ="Home.html">Home</a> &nbsp;</li>
+                <br>
+                <li><a href="DIT&NOC.html">Inheritance</a> &nbsp;</li>
+                <br>
+                <li><a href="methods_attributes.html">Methods and Attributes</a> &nbsp;</li>
+                <br>
+                <li><a href ="WMC.html">Weighted Methods per Class</a> &nbsp;</li>
+                <br>
+                <li><a href="RFC.html">Response for a Class</a> &nbsp;</li>
+                <br>
+                <li><a href="LCM.html">Lack of Cohesion of Methods</a> &nbsp;</li>
+                <br>
+                <li><a href="CBO.html">Coupling Between Objects</a> &nbsp;</li>
+                <br>
+                <li><a href="help.html">Help/Tutorial</a> &nbsp;</li>
+            </ul>
+        </nav>
+        <main>    
+        <body>
+            <h2>Lack of Cohesion of Methods</h2>
+            <p>The Lack of Cohesion of Methods Metric will help you determine class complexity in terms of how many 
+                purposes a single class serves. Ideally, each class should serve a singular purpose for your program. 
+                A class with 0 lack of cohesion has no methods, a class with 1 lack of cohesion serves a singular 
+                purpose, and a class with greater than 1 lack of cohesion serves multiple purposes.</p>
+            <br>
+            <p>To calculate lack of cohesion, we need to know which attributes of a class each of its methods use. 
+                We'll start with each method in its own group. Then we'll combine two groups if they share any of their 
+                used attributes, making a new group that uses every attributes its subgroups used. We continue combining 
+                groups until all groups have no attributes in common. The number of these remaining groups is our Lack of 
+                Cohesion of Methods Metric. There are other more complex versions of this metric, but this tool uses this 
+                definition.</p>
+            <div id="methodsAttributes">
+                <form id="classForm">
+                    <label for="selectedClass">Select Class:</label>
+                    <select id="selectedClass" name="selectedClass">
+                        <!-- Class options added by JavaScript -->
+                    </select>
+        
+                    <div id="methodsList">
+                        <h3>Methods</h3>
+                        <!-- Method inputs added by JavaScript -->
+                        <button type="button" onclick="addMethod()">+ Add Method</button>
+                    </div>
+        
+                    <div id="attributesList">
+                        <h3>Attributes</h3>
+                        <!-- Attribute inputs added by JavaScript -->
+                        <button type="button" onclick="addAttribute()">+ Add Attribute</button>
+                    </div>
+                </form>
+            </div>
+            <script src="script.js"></script>
+        
+    </main>
+    </div>
+</body>
+
+</html>
