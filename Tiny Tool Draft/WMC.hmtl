@@ -33,16 +33,19 @@
         </nav>
         <main>    
         <body>
-            <h2>Methods and Attributes</h2>
-            <p>What are attributes and methods? When dealing with object oriented programming, your classes will be composed of attributes and methods, 
-                as we call them here. An attribute of a class is a variable or array of variables of the same type that each member of the class 
-                has a value for. As an example, a "cat" class may have the attribute "breed", to describe which breed each cat is. The values an 
-                attribute takes on aren't relevant for our purposes, but knowing every attribute for the classes you'll be using is vital for 
-                determining the Lack of Cohesion of Methods metric for your classes, and can be helpful in understanding your classes and their 
-                methods in greater detail. Speaking of methods, the methods of your classes are any function that the class can call. This function 
-                can be as simple as telling the user an attribute value for a variable (such as a "getBreed" method for the "cat" class), but 
-                they can often be much more complex. Understanding what users of your project can do with the classes you're using (i.e. what their 
-                methods are) is key for being able to properly calculate the four non-inheritance CK metrics.</p>
+            <h2>Weighted Methods per Class</h2>
+            <p>The Weighted Methods per Class Metric will help you determine how complex your class is in terms of 
+                its functionality. There are two versions of this metric that our tool will allow you to use. The 
+                'Simple Method' just takes a count of how many methods your class has. The 'Complex Method' allows 
+                you to calculate the cyclomatic complexity of each method for your classes and input those values 
+                into the the calculator.</p>
+            <p>If you decide to use the 'Simple Method', then you have no more work to do for this metric! If you 
+                decide to use the 'Complex Method', you'll need to calculate the cyclomatic complexity for each of 
+                your classes' methods. For a particular method, you'll need to consider the all the possible paths 
+                that method can take. The cyclomatic complexity then is the 2 plus the number of edges minus the 
+                number of nodes for that method. The nodes are all of the possible lines of code the method might 
+                run, and the edges are all of the paths between those lines of code. An example of edges and nodes 
+                are shown below. ADD PICTURE BELOW!!!</p>
             <div id="methodsAttributes">
                 <form id="classForm">
                     <label for="selectedClass">Select Class:</label>
