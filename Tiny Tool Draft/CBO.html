@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Coupling Between Objects</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width", initial-scale="1.0">
+<!--<meta name="description" content="Home page. Our Agency is here to show you how amazing is Senegal as a country. It really is a great place for tourism. ">-->
+<link rel="stylesheet" type="text/css" href="main_style.css"/>
+<script src="script.js"></script>
+<body>
+    <div id="main">
+        <header>
+            <h1><a href="Home.html">Coupling Between Objects</a></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href ="Home.html">Home</a> &nbsp;</li>
+                <br>
+                <li><a href="DIT&NOC.html">Inheritance</a> &nbsp;</li>
+                <br>
+                <li><a href="methods_attributes.html">Methods and Attributes</a> &nbsp;</li>
+                <br>
+                <li><a href ="WMC.html">Weighted Methods per Class</a> &nbsp;</li>
+                <br>
+                <li><a href="RFC.html">Response for a Class</a> &nbsp;</li>
+                <br>
+                <li><a href="LCM.html">Lack of Cohesion of Methods</a> &nbsp;</li>
+                <br>
+                <li><a href="CBO.html">Coupling Between Objects</a> &nbsp;</li>
+                <br>
+                <li><a href="help.html">Help/Tutorial</a> &nbsp;</li>
+            </ul>
+        </nav>
+        <main>    
+        <body>
+            <h2>Coupling Between Objects</h2>
+            <p>The Coupling Between Objects Metric will help you determine class complexity in terms of how many other 
+                classes each class collaborates with. This metric is related to the Response for a Class Metric. 
+                Simply determine for each attribute and method in your classes which classes that attribute or method 
+                collaborates with. Enter each collaborator class's name into the table, and let our calculator do the 
+                rest. In order to determine which classes collaborate, feel free to use Class Responsibility 
+                Collaborator Cards (CRC Cards, and example shown below). The Coupling Between Objects metric for a class 
+                is the number of unique collaborators for that class.</p>
+          
+            <div id="methodsAttributes">
+                <form id="classForm">
+                    <label for="selectedClass">Select Class:</label>
+                    <select id="selectedClass" name="selectedClass">
+                        <!-- Class options added by JavaScript -->
+                    </select>
+        
+                    <div id="methodsList">
+                        <h3>Methods</h3>
+                        <!-- Method inputs added by JavaScript -->
+                        <button type="button" onclick="addMethod()">+ Add Method</button>
+                    </div>
+        
+                    <div id="attributesList">
+                        <h3>Attributes</h3>
+                        <!-- Attribute inputs added by JavaScript -->
+                        <button type="button" onclick="addAttribute()">+ Add Attribute</button>
+                    </div>
+                </form>
+            </div>
+            <script src="script.js"></script>
+        
+    </main>
+    </div>
+</body>
+
+</html>
