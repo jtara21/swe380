@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Response for a Class</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width", initial-scale="1.0">
+<!--<meta name="description" content="Home page. Our Agency is here to show you how amazing is Senegal as a country. It really is a great place for tourism. ">-->
+<link rel="stylesheet" type="text/css" href="main_style.css"/>
+<script src="script.js"></script>
+<body>
+    <div id="main">
+        <header>
+            <h1><a href="Home.html">Response for a Class</a></h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href ="Home.html">Home</a> &nbsp;</li>
+                <br>
+                <li><a href="DIT&NOC.html">Inheritance</a> &nbsp;</li>
+                <br>
+                <li><a href="methods_attributes.html">Methods and Attributes</a> &nbsp;</li>
+                <br>
+                <li><a href ="WMC.html">Weighted Methods per Class</a> &nbsp;</li>
+                <br>
+                <li><a href="RFC.html">Response for a Class</a> &nbsp;</li>\
+                <br>
+                <li><a href="LCM.html">Lack of Cohesion of Methods</a> &nbsp;</li>
+                <br>
+                <li><a href="CBO.html">Coupling Between Objects</a> &nbsp;</li>
+                <br>
+                <li><a href="help.html">Help/Tutorial</a> &nbsp;</li>
+            </ul>
+        </nav>
+        <main>    
+        <body>
+            <h2>Response for a Class</h2>
+            <p>The Response for a Class Metric will help you determine class complexity in terms of how far your 
+                classes' methods reach out to other methods. Simply determine for each method in your classes which  
+                methods that particular method calls. The method may call methods from its own class, or from other 
+                classes, but make sure you count them all. Enter each called method's name into the table, and let 
+                our calculator do the rest.</p><br>
+            <p>(The reason we need the specific called methods' names and not just the number of called methods is 
+                that you can't double count a called method for a particular class, no matter how many of its methods 
+                call that method. Also, some versions of this metric will go even deeper, including methods called by 
+                methods called by the methods of the class in question. This tool won't do this.</p>
+            <div id="methodsAttributes">
+                <form id="classForm">
+                    <label for="selectedClass">Select Class:</label>
+                    <select id="selectedClass" name="selectedClass">
+                        <!-- Class options added by JavaScript -->
+                    </select>
+        
+                    <div id="methodsList">
+                        <h3>Methods</h3>
+                        <!-- Method inputs added by JavaScript -->
+                        <button type="button" onclick="addMethod()">+ Add Method</button>
+                    </div>
+        
+                    <div id="attributesList">
+                        <h3>Attributes</h3>
+                        <!-- Attribute inputs added by JavaScript -->
+                        <button type="button" onclick="addAttribute()">+ Add Attribute</button>
+                    </div>
+                </form>
+            </div>
+            <script src="script.js"></script>
+        
+    </main>
+    </div>
+</body>
+
+</html>
