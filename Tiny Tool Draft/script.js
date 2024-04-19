@@ -88,26 +88,67 @@ function removeClass() {
 
 
 //Methods and Attributes Page
-let methods = [];
-let attributes = [];
+// General function to add method and attribute
+function addData() {
+    const methodName = document.getElementById('methodName').value.trim();
+    const attributeName = document.getElementById('attributeName').value.trim();
 
-function addMethod() {
-    const methodsList = document.getElementById('methodsList');
-    const methodInput = document.createElement('input');
-    methodInput.type = 'text';
-    methodInput.placeholder = 'Method Name';
-    methodsList.insertBefore(methodInput, methodsList.lastChild);
-    methods.push(methodInput);
+    if (methodName === "" || attributeName === "") {
+        alert("Please enter both a method name and an attribute name.");
+        return;
+    }
+
+    // Update the table with the new method and attribute
+    updateDataTable(methodName, attributeName);
+    // Save the data to session storage
+    saveDataToSession(methodName, attributeName);
+
+    // Clear the input fields after adding
+    document.getElementById('methodName').value = '';
+    document.getElementById('attributeName').value = '';
 }
 
-function addAttribute() {
-    const attributesList = document.getElementById('attributesList');
-    const attributeInput = document.createElement('input');
-    attributeInput.type = 'text';
-    attributeInput.placeholder = 'Attribute Name';
-    attributesList.insertBefore(attributeInput, attributesList.lastChild);
-    attributes.push(attributeInput);
+
+//Update The data from Methods and Attributes input on the table.
+function updateDataTable(methodName, attributeName) {
+    const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const newRow = tableBody.insertRow();
+    const methodCell = newRow.insertCell(0);
+    const attributeCell = newRow.insertCell(1);
+
+    methodCell.textContent = methodName;
+    attributeCell.textContent = attributeName;
 }
+
+
+//Saving the data from the M&A inputs 
+function saveDataToSession(methodName, attributeName) {
+    // Retrieve existing data from session storage
+    let savedData = JSON.parse(sessionStorage.getItem('methodAttributesData')) || [];
+    savedData.push({ methodName, attributeName });
+
+    // Save updated data back to session storage
+    sessionStorage.setItem('methodAttributesData', JSON.stringify(savedData));
+}
+
+//Have access to the saved data from the Methods and Attributes page
+function loadDataFromSession() {
+    const existingEntries = JSON.parse(sessionStorage.getItem('methodAttributesData'));
+    if (existingEntries) {
+        existingEntries.forEach(entry => {
+            updateDataTable(entry.methodName, entry.attributeName);
+        });
+    }
+}
+
+window.onload = loadDataFromSession;  // Call this function when the page loads
+
+// Next page
+function goToWeightPerMethodPage() {
+    window.location.href = 'WMC.html'; // Redirects to the Weight per Method page
+}
+
+
 
 // Function to update class dropdown based on your class data
 function updateClassDropdown() {
