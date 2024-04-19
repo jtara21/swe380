@@ -14,25 +14,26 @@
         </header>
         <nav>
             <ul>
-                <li><a href = "Home.html">Home</a> &nbsp;</li>
+                <li><a href ="Home.html">Home</a> &nbsp;</li>
                 <br>
-                <li><a href = "DIT&NOC.html">Inheritance</a> &nbsp;</li>
+                <li><a href="DIT&NOC.html">Inheritance</a> &nbsp;</li>
                 <br>
-                <li><a href = "methods_attributes.html">Methods and Attributes</a> &nbsp;</li>
+                <li><a href="methods_attributes.html">Methods and Attributes</a> &nbsp;</li>
                 <br>
-                <li><a href = "WMC.html">Weighted Methods per Class</a> &nbsp;</li>
+                <li><a href ="WMC.html">Weighted Methods per Class</a> &nbsp;</li>
                 <br>
-                <li><a href = "LCM.html">Lack of Cohesion of Methods</a> &nbsp;</li>
+                <li><a href="RFC.html">Response for a Class</a> &nbsp;</li>\
                 <br>
-                <li><a href = "RFC.html">Response for a Class</a> &nbsp;</li>
+                <li><a href="LCM.html">Lack of Cohesion of Methods</a> &nbsp;</li>
                 <br>
-                <li><a href = "CBO.html">Coupling Between Objects</a> &nbsp;</li>
+                <li><a href="CBO.html">Coupling Between Objects</a> &nbsp;</li>
                 <br>
-                <li><a href = "help.html">Help/Tutorial</a> &nbsp;</li>
+                <li><a href="help.html">Help/Tutorial</a> &nbsp;</li>
             </ul>
         </nav>
-        <main>    
-        <body>
+        <main>
+
+        <body> 
             <h2>Methods and Attributes</h2>
             <p>What are attributes and methods? When dealing with object oriented programming, your classes will be composed of attributes and methods, 
                 as we call them here. An attribute of a class is a variable or array of variables of the same type that each member of the class 
@@ -42,25 +43,43 @@
                 methods in greater detail. Speaking of methods, the methods of your classes are any function that the class can call. This function 
                 can be as simple as telling the user an attribute value for a variable (such as a "getBreed" method for the "cat" class), but 
                 they can often be much more complex. Understanding what users of your project can do with the classes you're using (i.e. what their 
-                methods are) is key for being able to properly calculate the four non-inheritance CK metrics.</p>
-            <div id="methodsAttributes">
+                methods are) is key for being able to properly calculate the four non-inheritance CK metrics.
+            </p>
+
+            <br>
+            <br> 
+
+                    <!-- Rows will be added here -->
+                </tbody>
+            </table>
+            <div id="methodsAttributes" class="form-container">
                 <form id="classForm">
                     <label for="selectedClass">Select Class:</label>
                     <select id="selectedClass" name="selectedClass">
                         <!-- Class options added by JavaScript -->
                     </select>
-        
-                    <div id="methodsList">
-                        <h3>Methods</h3>
-                        <!-- Method inputs added by JavaScript -->
-                        <button type="button" onclick="addMethod()">+ Add Method</button>
-                    </div>
-        
-                    <div id="attributesList">
-                        <h3>Attributes</h3>
-                        <!-- Attribute inputs added by JavaScript -->
-                        <button type="button" onclick="addAttribute()">+ Add Attribute</button>
-                    </div>
+            
+                    <label for="methodName">Method Name:</label>
+                    <input type="text" id="methodName" placeholder="Enter Method Name">
+            
+                    <label for="attributeName">Attribute Name:</label>
+                    <input type="text" id="attributeName" placeholder="Enter Attribute Name">
+            
+                    <button type="button" onclick="addData()">+ Add Both</button>
+                    <br>
+                    <br>
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Method Name</th>
+                                <th>Attribute Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rows will be added here -->
+                        </tbody>
+                    </table>
+                    <button type="button" class ="next-button" onclick="goToWeightPerMethodPage()">Next Metric</button>
                 </form>
             </div>
             <script src="script.js"></script>
