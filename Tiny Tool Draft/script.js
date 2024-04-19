@@ -162,11 +162,61 @@ function updateClassDropdown() {
         classDropdown.appendChild(option);
     });
 }
-
 // Call this function once your page data is ready
 updateClassDropdown();
 
 
+
+
+
+
+//Weighted Method per class
+window.onload = function() {
+    loadDataFromSession();
+    updateMethodsTable();
+};
+
+//WMC page
+function addMethod() {
+    const methodName = document.getElementById('methodName').value.trim();
+    const complexity = parseInt(document.getElementById('complexity').value, 10) || 0;
+
+    if (methodName === "") {
+        alert("Please enter a method name.");
+        return;
+    }
+
+    methods.push({ methodName, complexity });
+    updateMethodsTable();
+
+    document.getElementById('methodName').value = '';
+    document.getElementById('complexity').value = '';
+}
+
+function updateMethodsTable() {
+    const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Clear existing entries
+
+    methods.forEach(method => {
+        const row = tableBody.insertRow();
+        const methodNameCell = row.insertCell(0);
+        const complexityCell = row.insertCell(1);
+        const complexityInput = document.createElement('input');
+        complexityInput.type = 'number';
+        complexityInput.value = method.complexity;
+        complexityInput.onchange = function() {
+            method.complexity = parseInt(complexityInput.value, 10) || 0;
+        };
+
+        methodNameCell.textContent = method.methodName;
+        complexityCell.appendChild(complexityInput);
+    });
+}
+
+function calculateTotalWMC() {
+    const totalWMC = methods.reduce((acc, method) => acc + method.complexity, 0);
+    document.getElementById('totalWMC').querySelector('span').textContent = totalWMC;
+}
 
 
 
