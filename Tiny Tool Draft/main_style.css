@@ -248,6 +248,35 @@ dd {
 }
 
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border: none;
+  }
+
+
+
+/* Container to hold the button, ensures the button stays at the bottom right */
+.form-container {
+    position: relative;
+    min-height: 80vh; /* Adjust height as needed, depending on content */
+    padding: 20px;
+}
+
+/* Style and position the button */
+.next-button {
+    padding: 10px 15px; /* Smaller padding to reduce button size */
+    /*font-size: 12px; Smaller font size for the text inside the button */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute; /* Position absolutely within the relative container */
+    right: 20px; /* 20px from the right edge of the container */
+    bottom: 20px; /* 20px from the bottom edge of the container */
+}
 
 
 
