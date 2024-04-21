@@ -177,44 +177,91 @@ window.onload = function() {
 };
 
 //WMC page
-function addMethod() {
-    const methodName = document.getElementById('methodName').value.trim();
-    const complexity = parseInt(document.getElementById('complexity').value, 10) || 0;
+let methods = [];
+let addedMethods = new Set(); // Track added methods to ensure uniqueness
 
-    if (methodName === "") {
-        alert("Please enter a method name.");
+window.onload = function() {
+    loadMethodsFromSession();
+};
+function toggleCalculationType(type) {
+    const complexityInput = document.getElementById('complexity');
+    const complexityHeader = document.getElementById('complexityHeader');
+    const methodInputArea = document.getElementById('methodInputArea');
+    const calculateButton = document.querySelector('button[onclick="calculateTotalWMC()"]');
+
+    document.querySelectorAll("#methodsTable tbody tr").forEach(row => row.deleteCell(-1)); // Remove last cell from each row
+
+    if (type === 'complex') {
+        methodInputArea.style.display = 'block';
+        complexityInput.disabled = false;
+        complexityHeader.style.display = "";
+        calculateButton.disabled = false;
+        methods.forEach(method => addComplexityColumn(method.complexity)); // Re-add complexity column for existing methods
+    } else {
+        methodInputArea.style.display = 'block';
+        complexityInput.disabled = true;
+        complexityHeader.style.display = "none";
+        calculateButton.disabled = false;
+    }
+}
+
+function addSelectedMethod() {
+    window.onload = function() {
+        loadMethodsFromSession();
+    };
+    const methodName = document.getElementById('methodSelect').value || document.getElementById('newMethodName').value.trim();
+    const complexity = document.getElementById('complexity').disabled ? 0 : parseInt(document.getElementById('complexity').value, 10) || 0;
+
+    if (!methodName) {
+        alert("Please enter or select a method name.");
         return;
     }
 
-    methods.push({ methodName, complexity });
-    updateMethodsTable();
+    if (addedMethods.has(methodName)) {
+        alert("This method has already been added.");
+        return;
+    }
 
-    document.getElementById('methodName').value = '';
+    const method = { methodName, complexity };
+    methods.push(method);
+    addedMethods.add(methodName);
+    updateMethodsTable(method);
+    updateMethodDropdown();
+
+    document.getElementById('newMethodName').value = '';
     document.getElementById('complexity').value = '';
 }
 
-function updateMethodsTable() {
+function updateMethodsTable(method) {
     const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Clear existing entries
+    const row = tableBody.insertRow();
+    const methodNameCell = row.insertCell(0);
+    methodNameCell.textContent = method.methodName;
 
-    methods.forEach(method => {
-        const row = tableBody.insertRow();
-        const methodNameCell = row.insertCell(0);
+    if (!document.getElementById('complexity').disabled) {
         const complexityCell = row.insertCell(1);
-        const complexityInput = document.createElement('input');
-        complexityInput.type = 'number';
-        complexityInput.value = method.complexity;
-        complexityInput.onchange = function() {
-            method.complexity = parseInt(complexityInput.value, 10) || 0;
-        };
+        complexityCell.textContent = method.complexity;
+    }
+}
 
-        methodNameCell.textContent = method.methodName;
-        complexityCell.appendChild(complexityInput);
+function addComplexityColumn(complexity) {
+    const rows = document.getElementById('methodsTable').getElementsByTagName('tbody')[0].rows;
+    Array.from(rows).forEach(row => {
+        const cell = row.insertCell(1);
+        cell.textContent = complexity;
     });
 }
 
 function calculateTotalWMC() {
-    const totalWMC = methods.reduce((acc, method) => acc + method.complexity, 0);
+    const isComplexityEnabled = !document.getElementById('complexity').disabled;
+    let totalWMC;
+
+    if (isComplexityEnabled) {
+        totalWMC = methods.reduce((acc, method) => acc + method.complexity, 0);
+    } else {
+        totalWMC = methods.length; // Simple calculation just counts the number of methods
+    }
+
     document.getElementById('totalWMC').querySelector('span').textContent = totalWMC;
 }
 
