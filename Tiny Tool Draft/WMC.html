@@ -47,31 +47,41 @@ that method can take. The cyclomatic complexity then is 2 plus the number of edg
 number of nodes for that method. The nodes are all of the possible lines of code the method might 
 run, and the edges are all of the paths between those lines of code. An example of edges and nodes 
 is shown below. ADD PICTURE BELOW!!!</p>
-   <div id = "WMC">
-                    <label for="methodName">Method Name:</label>
-                    <input type="text" id="methodName" placeholder="Enter Method Name">
-            
-                    <label for="complexity">Cyclomatic Complexity:</label>
-                    <input type="number" id="complexity" placeholder="Enter Complexity Value">
-            
-                    <button onclick="addMethod()">Add Method</button>
-                </div>
-            
-                <table id="methodsTable">
-                    <thead>
-                        <tr>
-                            <th>Method Name</th>
-                            <th>Cyclomatic Complexity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Methods and complexities will be added here -->
-                    </tbody>
-                </table>
-            
-                <button onclick="calculateTotalWMC()">Calculate Total WMC</button>
-                <div id="totalWMC">Total WMC: <span>0</span></div>
-            <script src="script.js"></script>
+ <div id ="wmc">
+                    <div>
+                        <label><input type="radio" name="calcType" value="simple" onclick="toggleCalculationType('simple')"> Simple Calculation</label>
+                        <label><input type="radio" name="calcType" value="complex" onclick="toggleCalculationType('complex')"> Cyclomatic Complexity</label>
+                    </div>
+                    <div id="methodInputArea" style="display: none;">
+                        <label for="methodSelect">Select Method:</label>
+                        <select id="methodSelect">
+                            <option value="">--Select a Method--</option>
+                            <!-- Options will be populated here -->
+                        </select>
+                
+                        <label for="newMethodName">New Method Name:</label>
+                        <input type="text" id="newMethodName" placeholder="Enter New Method Name if not listed">
+                        <br>
+                        <label for="complexity">Cyclomatic Complexity:</label>
+                        <input type="number" id="complexity" placeholder="Enter Complexity Value" disabled>
+                
+                        <button onclick="addSelectedMethod()">Add Method</button>
+                    </div>
+                
+                    <table id="methodsTable">
+                        <thead>
+                            <tr>
+                                <th>Method Name</th>
+                                <th id="complexityHeader" style="display:none;">Cyclomatic Complexity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                
+                    <button onclick="calculateTotalWMC()" disabled>Calculate Total WMC</button>
+                    <div id="totalWMC">Total WMC: <span>0</span></div>
+                <script src="script.js"></script>
         
     </main>
     </div>
