@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width", initial-scale="1.0">
 <!--<meta name="description" content="Home page. Our Agency is here to show you how amazing is Senegal as a country. It really is a great place for tourism. ">-->
 <link rel="stylesheet" type="text/css" href="main_style.css"/>
-<script src="script.js"></script>
 <body>
     <div id="main">
         <header>
@@ -50,36 +49,21 @@ methods are) is key for being able to properly calculate the four non-inheritanc
 
                     <!-- Rows will be added here -->
                 </tbody>
+            <button onclick="addEditableRow()">Add New Row</button>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Method Name</th>
+                        <th>Attribute Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Editable rows will be added here -->
+                </tbody>
             </table>
-            <div id="methodsAttributes" class="form-container">
-                <form id="classForm">
-                    <label for="selectedClass">Select Class:</label>
-                    <select id="selectedClass" name="selectedClass">
-                        <!-- Class options added by JavaScript -->
-                    </select>
             
-                    <label for="methodName">Method Name:</label>
-                    <input type="text" id="methodName" placeholder="Enter Method Name">
+            <button onclick="goToWeightPerMethodPage()">Weight per Method Page</button>
             
-                    <label for="attributeName">Attribute Name:</label>
-                    <input type="text" id="attributeName" placeholder="Enter Attribute Name">
-            
-                    <button type="button" onclick="addData()">+ Add Both</button>
-                    <br>
-                    <br>
-                    <table id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>Method Name</th>
-                                <th>Attribute Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Rows will be added here -->
-                        </tbody>
-                    </table>
-                    <button type="button" class ="next-button" onclick="goToWeightPerMethodPage()">Next Metric</button>
-                </form>
             </div>
             <script src="script.js"></script>
         
