@@ -40,21 +40,6 @@ function displayResults() {
     }
 }
 
-// Function to update class dropdown based on your class data
-function updateClassDropdown() {
-    const classDropdown = document.getElementById('selectedClass');
-    // Assume you have a getClassNames function that returns an array of class names
-    const classNames = getClassNames(); // You need to implement this function
-    classNames.forEach(className => {
-        const option = document.createElement('option');
-        option.value = className;
-        option.textContent = className;
-        classDropdown.appendChild(option);
-    });
-
-}
-
-
 
 //LCM Page
 let associations = [];
