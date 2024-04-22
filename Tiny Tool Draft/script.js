@@ -1,4 +1,4 @@
-let numberOfClasses = 2;
+/*let numberOfClasses = 2;
 
 function addColumn() {
     let table = document.getElementById('mainTable');
@@ -16,9 +16,43 @@ function addColumn() {
         cell.innerHTML = '<input type="text">';
         rows[i].appendChild(cell);
     }
+}*/
+
+
+//Home page table results template
+function displayResults() {
+    // Simulated results data
+    let table = document.getElementById('metricsTable');
+    let rows = table.getElementsByTagName('tr');
+    let head = document.createElement('th');
+    const results = {
+        DIT: '5 levels',
+        NOC: '3 children',
+        CBO: '2 objects',
+        RFC: '10 methods',
+        LCOM: 'Low cohesion',
+        WMC: 'High complexity'
+    };
+
+    // Displaying the results in the table
+    for (const metric in results) {
+        document.getElementById(metric).textContent = results[metric];
+    }
 }
 
+// Function to update class dropdown based on your class data
+function updateClassDropdown() {
+    const classDropdown = document.getElementById('selectedClass');
+    // Assume you have a getClassNames function that returns an array of class names
+    const classNames = getClassNames(); // You need to implement this function
+    classNames.forEach(className => {
+        const option = document.createElement('option');
+        option.value = className;
+        option.textContent = className;
+        classDropdown.appendChild(option);
+    });
 
+}
 
 
 
