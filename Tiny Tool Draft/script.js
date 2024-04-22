@@ -155,59 +155,53 @@ function removeClass() {
 
 //Methods and Attributes Page
 // General function to add method and attribute
-function addData() {
-    const methodName = document.getElementById('methodName').value.trim();
-    const attributeName = document.getElementById('attributeName').value.trim();
-
-    if (methodName === "" || attributeName === "") {
-        alert("Please enter both a method name and an attribute name.");
-        return;
-    }
-
-    // Update the table with the new method and attribute
-    updateDataTable(methodName, attributeName);
-    // Save the data to session storage
-    saveDataToSession(methodName, attributeName);
-
-    // Clear the input fields after adding
-    document.getElementById('methodName').value = '';
-    document.getElementById('attributeName').value = '';
-}
-
-
-//Update The data from Methods and Attributes input on the table.
-function updateDataTable(methodName, attributeName) {
+// Add a new editable row to the table
+function addEditableRow() {
     const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
     const newRow = tableBody.insertRow();
     const methodCell = newRow.insertCell(0);
     const attributeCell = newRow.insertCell(1);
 
-    methodCell.textContent = methodName;
-    attributeCell.textContent = attributeName;
+    methodCell.innerHTML = '<input type="text" class="input-method" onchange="saveDataToSession()">';
+    attributeCell.innerHTML = '<input type="text" class="input-attribute" onchange="saveDataToSession()">';
 }
 
+// Save the data from the table to session storage
+function saveDataToSession() {
+    const inputsMethod = document.querySelectorAll('.input-method');
+    const inputsAttribute = document.querySelectorAll('.input-attribute');
+    let data = [];
 
-//Saving the data from the M&A inputs 
-function saveDataToSession(methodName, attributeName) {
-    // Retrieve existing data from session storage
-    let savedData = JSON.parse(sessionStorage.getItem('methodAttributesData')) || [];
-    savedData.push({ methodName, attributeName });
+    inputsMethod.forEach((input, index) => {
+        if (input.value && inputsAttribute[index].value) {  // Ensure both fields are filled out
+            data.push({
+                methodName: input.value,
+                attributeName: inputsAttribute[index].value
+            });
+        }
+    });
 
-    // Save updated data back to session storage
-    sessionStorage.setItem('methodAttributesData', JSON.stringify(savedData));
+    sessionStorage.setItem('methodAttributesData', JSON.stringify(data));
 }
 
-//Have access to the saved data from the Methods and Attributes page
+// Load data from session storage to the table
 function loadDataFromSession() {
-    const existingEntries = JSON.parse(sessionStorage.getItem('methodAttributesData'));
-    if (existingEntries) {
-        existingEntries.forEach(entry => {
-            updateDataTable(entry.methodName, entry.attributeName);
+
+    const savedData = JSON.parse(sessionStorage.getItem('methodAttributesData'));
+    if (savedData && savedData.length > 0) {
+        savedData.forEach(entry => {
+            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            const newRow = tableBody.insertRow();
+            const methodCell = newRow.insertCell(0);
+            const attributeCell = newRow.insertCell(1);
+            methodCell.innerHTML = `<input type="text" class="input-method" value="${entry.methodName}" onchange="saveDataToSession()">`;
+            attributeCell.innerHTML = `<input type="text" class="input-attribute" value="${entry.attributeName}" onchange="saveDataToSession()">`;
         });
     }
 }
 
-window.onload = loadDataFromSession;  // Call this function when the page loads
+// Ensure data loads when the page loads
+window.onload = loadDataFromSession();
 
 // Next page
 function goToWeightPerMethodPage() {
