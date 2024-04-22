@@ -172,16 +172,22 @@ function saveDataToSession() {
     const inputsAttribute = document.querySelectorAll('.input-attribute');
     let data = [];
 
+    // Iterate over all inputs and save entries where at least one of the fields is filled
     inputsMethod.forEach((input, index) => {
-        if (input.value && inputsAttribute[index].value) {  // Ensure both fields are filled out
+        // Check if either method or attribute input is filled out
+        if (input.value.trim() || inputsAttribute[index].value.trim()) {
             data.push({
-                methodName: input.value,
-                attributeName: inputsAttribute[index].value
+                methodName: input.value.trim(),
+                attributeName: inputsAttribute[index].value.trim()
             });
         }
     });
 
+    // Save the data to session storage
     sessionStorage.setItem('methodAttributesData', JSON.stringify(data));
+
+    // Alert the user that data has been saved
+    //alert('Data has been saved successfully!');
 }
 
 // Load data from session storage to the table
