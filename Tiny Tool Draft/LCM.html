@@ -34,17 +34,21 @@
         <main>    
         <body>
             <h2>Lack of Cohesion of Methods</h2>
-           <p>The <b>Lack of Cohesion of Methods Metric</b> will help you determine class complexity in terms of how many 
-purposes a single class serves. Ideally, each class should serve a singular purpose for your program. 
-A class with <i>0 lack of cohesion</i> has no methods, a class with <i>1 lack of cohesion</i> serves a singular 
-purpose, and a class with greater than <i>1 lack of cohesion</i> serves multiple purposes.</p>
-<br>
-<p>To calculate lack of cohesion, we need to know which attributes of a class each of its methods use. 
-We'll start with each method in its own group. Then we'll combine two groups if they share any of their 
-used attributes, making a new group that uses every attribute its subgroups used. We continue combining 
-groups until all groups have no attributes in common. The number of these remaining groups is our Lack of 
-Cohesion of Methods Metric. There are other more complex versions of this metric, but this tool uses this 
-definition.</p>
+                <p>The <b>Lack of Cohesion of Methods Metric</b> will help you determine class complexity in terms of how many 
+                    purposes a single class serves. Ideally, each class should serve a singular purpose for your program. 
+                    A class with <i>0 lack of cohesion</i> has no methods, a class with <i>1 lack of cohesion</i> serves a singular 
+                    purpose, and a class with greater than <i>1 lack of cohesion</i> serves multiple purposes.</p>
+                <br>
+                <p>To calculate lack of cohesion, we need to know which attributes of a class each of its methods use. 
+                    We'll start with each method in its own group. Then we'll combine two groups if they share any of their 
+                    used attributes, making a new group that uses every attribute its subgroups used. We continue combining 
+                    groups until all groups have no attributes in common. The number of these remaining groups is our Lack of 
+                    Cohesion of Methods Metric. There are other more complex versions of this metric, but this tool uses this 
+                    definition.</p>
+                <br>
+                <p>To use this page of the calculator, simply select "Yes" from the dropdown boxes on the table if the method 
+                    for the row utilizes the attribute for the column, or leave it at "No" if the method does not utilize the 
+                    attribute.</p>
             <div id="lcm">
                 <label for="methodSelect">Method:</label>
                 <select id="methodSelect">
