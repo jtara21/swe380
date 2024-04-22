@@ -47,29 +47,35 @@ n<!DOCTYPE html>
                     number of nodes for that method. The nodes are all of the possible sections of code the method might 
                     run, and the edges are all of the paths between those sections of code. An example of using edges and nodes 
                     to calculate cyclomatic complexity is shown below.</p>
-            <div id ="wmc">
+           <div id ="wmc">
                                <form>
                     <input type="radio" id="simpleCalc" name="calcType" value="simple" checked> Simple Calculation
                     <input type="radio" id="complexCalc" name="calcType" value="complex"> Cyclomatic Complexity
                 </form>
-                <table id="methodsTable">
-                    <thead>
-                        <tr>
-                            <th>Method Name</th>
-                            <th>Cyclomatic Complexity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Methods and complexities will be filled here -->
-                    </tbody>
-                </table>
-                <button onclick="calculateTotalWMC()">Calculate WMC</button>
-                <div id="totalWMC">Total WMC: <span>0</span></div>
-                <script src="script.js"></script>
-                    <br>
+                
+                    <label>
+                        <input type="checkbox" id="enableComplex" onchange="toggleComplexityInputs()">
+                        Enable Complex Calculation
+                    </label>
                     <br> 
-                    <button onclick="goToLCMPage()">Lack of Cohesion in Methods Page</button>
+                    <br>
+                    <table id="methodsTable">
+                        <thead>
+                            <tr>
+                                <th>Method Name</th>
+                                <th>Cyclomatic Complexity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Methods and complexities will be filled here -->
+                        </tbody>
+                    </table>
+                    <div class="button-container">
+                        <button onclick="calculateWMC()" id="calculateButton">Calculate WMC</button>
+                    </div>
+                    <div id="totalWMC">Total WMC: 0</div>
                 <script src="script.js"></script>
+           </div>
                 <img src="Images/wmcImage.png">
     </main>
     </div>
