@@ -40,37 +40,40 @@
         <p>If you're curious on what this tool is used for or how to use it, please check out the "Help/Tutorial" 
             page in the left menu bar. If you'd simply like to begin, head to Depth of Inheritance Tree or Number 
             of Children to create some classes and get started.</p>
-        <table id="mainTable">
-            <tr>
-                <th class="table-cell">Metrics</th>
-                <th class="table-cell">Class 1</th>
-            </tr>
-            <tr>
-                <td class="table-cell"><a href="DIT&NOC.html">Depth of Inheritance Tree</a></td>
-                <td class="table-cell"><input type="text"></td>
-            </tr>
-            <tr>
-                <td class="table-cell"><a href="DIT&NOC.html">Number of Children</a></td>
-                <td class="table-cell"><input type="text"></td>
-            </tr>
-            <tr>
-                <td class="table-cell"><a href="CBO.html">Coupling Between Objects</a></td>
-                <td class="table-cell"><input type="text"></td>
-            </tr>
-            <tr>
-                <td class="table-cell"><a href="RFC.html">Response For a Class</a></td>
-                <td class="table-cell"><input type="text"></td>
-            </tr>
-            <tr>
-                <td class="table-cell"><a href="LCM.html">Lack of Cohesion of Methods</a></td>
-                <td class="table-cell"><input type="text"></td>
-            </tr>
-            <tr>
-                <td class="table-cell"><a href ="WMC.html">Weighted Methods per Class</a></td>
-                <td class="table-cell"><input type="text"></td>
-            </tr>
-        </table>
-        <button>Calculate</button>
+                    <table id="metricsTable">
+                <tr>
+                    <th>Metrics</th>
+                    <th>Class 1</th>
+                    <!-- More classes can be added dynamically by JavaScript if needed -->
+                </tr>
+                <tr>
+                    <td>Depth of Inheritance Tree</td>
+                    <td id="DIT">-</td>
+                </tr>
+                <tr>
+                    <td>Number of Children</td>
+                    <td id="NOC">-</td>
+                </tr>
+                <tr>
+                    <td>Coupling Between Objects</td>
+                    <td id="CBO">-</td>
+                </tr>
+                <tr>
+                    <td>Response For a Class</td>
+                    <td id="RFC">-</td>
+                </tr>
+                <tr>
+                    <td>Lack of Cohesion of Methods</td>
+                    <td id="LCOM">-</td>
+                </tr>
+                <tr>
+                    <td>Weighted Methods per Class</td>
+                    <td id="WMC">-</td>
+                </tr>
+            </table>
+            <div class="center">
+            <button id="displayResults" onclick="displayResults()">Display Results</button>
+            </div>
     </main>
         <!--<footer>Copyright &copy; 2024 JATJ TT / SWE 380<a href="">Email us Here</a></footer>-->
     </div>
