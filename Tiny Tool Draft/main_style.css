@@ -52,8 +52,8 @@ h1{
 nav{text-align: center;
     font-weight: bold;
     font-size: 100%;
-    padding: 0;
-    margin-top: 1.5em;
+    padding: 5px 10px; 
+    margin-top: 0.5em;
     background-color: #2D3E4E; /* Deep Ocean Blue for the navigation bar background */
     padding: 20px 10px;
 }
