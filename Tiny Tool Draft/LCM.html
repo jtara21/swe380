@@ -45,25 +45,36 @@ used attributes, making a new group that uses every attribute its subgroups used
 groups until all groups have no attributes in common. The number of these remaining groups is our Lack of 
 Cohesion of Methods Metric. There are other more complex versions of this metric, but this tool uses this 
 definition.</p>
-            <div id="methodsAttributes">
-                <form id="classForm">
-                    <label for="selectedClass">Select Class:</label>
-                    <select id="selectedClass" name="selectedClass">
-                        <!-- Class options added by JavaScript -->
-                    </select>
+            <div id="lcm">
+                <label for="methodSelect">Method:</label>
+                <select id="methodSelect">
+                    <option value="">--Select a Method--</option>
+                    <!-- Method options will be populated here -->
+                </select>
         
-                    <div id="methodsList">
-                        <h3>Methods</h3>
-                        <!-- Method inputs added by JavaScript -->
-                        <button type="button" onclick="addMethod()">+ Add Method</button>
-                    </div>
+                <label for="attributeSelect">Attribute:</label>
+                <select id="attributeSelect">
+                    <option value="">--Select an Attribute--</option>
+                    <!-- Attribute options will be populated here -->
+                </select>
         
-                    <div id="attributesList">
-                        <h3>Attributes</h3>
-                        <!-- Attribute inputs added by JavaScript -->
-                        <button type="button" onclick="addAttribute()">+ Add Attribute</button>
-                    </div>
-                </form>
+                <button onclick="addMethodAttribute()">Add Association</button>
+            </div>
+        
+            <table id="associationsTable">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Attribute</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Associations will be added here -->
+                </tbody>
+            </table>
+        
+            <button onclick="calculateLCOM()">Calculate LCOM</button>
+            <div id="lcomScore">LCOM Score: <span>0</span></div>
             </div>
             <script src="script.js"></script>
         
