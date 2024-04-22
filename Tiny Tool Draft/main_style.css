@@ -278,8 +278,12 @@ dd {
     bottom: 20px; /* 20px from the bottom edge of the container */
 }
 
-
-
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1px;
+  width: 400px;
+}
 
 
 
