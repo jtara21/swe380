@@ -32,58 +32,57 @@ n<!DOCTYPE html>
             </ul>
         </nav>
         <main>    
-        <body>
-            <h2>Weighted Methods per Class</h2>
-           <p>The <b>Weighted Methods per Class Metric</b> will help you determine how complex your class is in terms of 
-its functionality. There are two versions of this metric that our tool will allow you to use. The 
-'<i>Simple Method</i>' just takes a count of how many methods your class has. The '<i>Complex Method</i>' allows 
-you to calculate the cyclomatic complexity of each method for your classes and input those values 
-into the calculator.</p>
-<br>
-<p>If you decide to use the '<i>Simple Method</i>', then you have no more work to do for this metric! If you 
-decide to use the '<i>Complex Method</i>', you'll need to calculate the cyclomatic complexity for each of 
-your classes' methods. For a particular method, you'll need to consider all the possible paths 
-that method can take. The cyclomatic complexity then is 2 plus the number of edges minus the 
-number of nodes for that method. The nodes are all of the possible sections of code the method might 
-run, and the edges are all of the paths between those sections of code. An example of edges and nodes 
-is shown below.</p>
-            <img src="Images/wmcImage.png">
- <div id ="wmc">
-                    <div>
-                        <label><input type="radio" name="calcType" value="simple" onclick="toggleCalculationType('simple')"> Simple Calculation</label>
-                        <label><input type="radio" name="calcType" value="complex" onclick="toggleCalculationType('complex')"> Cyclomatic Complexity</label>
-                    </div>
-                    <div id="methodInputArea" style="display: none;">
-                        <label for="methodSelect">Select Method:</label>
-                        <select id="methodSelect">
-                            <option value="">--Select a Method--</option>
-                            <!-- Options will be populated here -->
-                        </select>
+            <body>
+                <h2>Weighted Methods per Class</h2>
+                <p>The <b>Weighted Methods per Class Metric</b> will help you determine how complex your class is in terms of 
+                    its functionality. There are two versions of this metric that our tool will allow you to use. The 
+                    '<i>Simple Method</i>' just takes a count of how many methods your class has. The '<i>Complex Method</i>' allows 
+                    you to calculate the cyclomatic complexity of each method for your classes and input those values 
+                    into the calculator.</p>
+                 <br>
+                 <p>If you decide to use the '<i>Simple Method</i>', then you have no more work to do for this metric! If you 
+                    decide to use the '<i>Complex Method</i>', you'll need to calculate the cyclomatic complexity for each of 
+                    your classes' methods. For a particular method, you'll need to consider all the possible paths 
+                    that method can take. The cyclomatic complexity then is 2 plus the number of edges minus the 
+                    number of nodes for that method. The nodes are all of the possible sections of code the method might 
+                    run, and the edges are all of the paths between those sections of code. An example of using edges and nodes 
+                    to calculate cyclomatic complexity is shown below.</p>
+            <div id ="wmc">
+                <div>
+                    <label><input type="radio" name="calcType" value="simple" onclick="toggleCalculationType('simple')"> Simple Calculation</label>
+                    <label><input type="radio" name="calcType" value="complex" onclick="toggleCalculationType('complex')"> Cyclomatic Complexity</label>
+                </div>
+                <div id="methodInputArea" style="display: none;">
+                    <label for="methodSelect">Select Method:</label>
+                    <select id="methodSelect">
+                        <option value="">--Select a Method--</option>
+                        <!-- Options will be populated here -->
+                    </select>
                 
-                        <label for="newMethodName">New Method Name:</label>
-                        <input type="text" id="newMethodName" placeholder="Enter New Method Name if not listed">
-                        <br>
-                        <label for="complexity">Cyclomatic Complexity:</label>
-                        <input type="number" id="complexity" placeholder="Enter Complexity Value" disabled>
+                    <label for="newMethodName">New Method Name:</label>
+                    <input type="text" id="newMethodName" placeholder="Enter New Method Name if not listed">
+                    <br>
+                    <label for="complexity">Cyclomatic Complexity:</label>
+                    <input type="number" id="complexity" placeholder="Enter Complexity Value" disabled>
                 
-                        <button onclick="addSelectedMethod()">Add Method</button>
-                    </div>
+                     <button onclick="addSelectedMethod()">Add Method</button>
+                </div>
                 
-                    <table id="methodsTable">
-                        <thead>
-                            <tr>
-                                <th>Method Name</th>
-                                <th id="complexityHeader" style="display:none;">Cyclomatic Complexity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                <table id="methodsTable">
+                    <thead>
+                        <tr>
+                            <th>Method Name</th>
+                            <th id="complexityHeader" style="display:none;">Cyclomatic Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
                 
-                    <button onclick="calculateTotalWMC()" disabled>Calculate Total WMC</button>
-                    <div id="totalWMC">Total WMC: <span>0</span></div>
+                <button onclick="calculateTotalWMC()" disabled>Calculate Total WMC</button>                   
+                <div id="totalWMC">Total WMC: <span>0</span></div>
                 <script src="script.js"></script>
-        
+                <img src="Images/wmcImage.png">
     </main>
     </div>
 </body>
