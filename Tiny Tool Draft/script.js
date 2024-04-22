@@ -22,6 +22,53 @@ function addColumn() {
 
 
 
+//LCM Page
+let associations = [];
+
+function addMethodAttribute() {
+    const methodSelect = document.getElementById('methodSelect');
+    const attributeSelect = document.getElementById('attributeSelect');
+    const method = methodSelect.value;
+    const attribute = attributeSelect.value;
+
+    if (!method || !attribute) {
+        alert("Please select both a method and an attribute.");
+        return;
+    }
+
+    // Prevent duplicate entries
+    const associationExists = associations.some(assoc => assoc.method === method && assoc.attribute === attribute);
+    if (associationExists) {
+        alert("This association has already been added.");
+        return;
+    }
+
+    associations.push({ method, attribute });
+    updateAssociationsTable();
+}
+
+function updateAssociationsTable() {
+    const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Clear existing entries
+
+    associations.forEach(assoc => {
+        const row = tableBody.insertRow();
+        const methodCell = row.insertCell(0);
+        const attributeCell = row.insertCell(1);
+        methodCell.textContent = assoc.method;
+        attributeCell.textContent = assoc.attribute;
+    });
+}
+
+function calculateLCOM() {
+    // Implement LCOM calculation logic here based on the associations
+    const lcomScore = calculateLCOMScore(associations); // You will need to define this function
+    document.getElementById('lcomScore').querySelector('span').textContent = lcomScore;
+}
+
+
+
+
 
 //DIT and NOC page
 let classes = [];
