@@ -51,17 +51,17 @@
                 <div id ="wmc">
                     <form id="classForm">
 
+                        <label>
+                            <input type="checkbox" id="enableComplex" onchange="toggleComplexityInputs()">
+                            Enable Complex Calculation
+                        </label>
+                        <br><br>
+                        
                         <label for="selectedClass">Select Class:</label>
                         <br>
                         <select id="classDropdown" name="selectedClass">
                         <!-- Class options added by JavaScript -->
                         </select>
-                        <br><br>
-                    
-                        <label>
-                            <input type="checkbox" id="enableComplex" onchange="toggleComplexityInputs()">
-                            Enable Complex Calculation
-                        </label>
                         <br><br>
                     
                         <table id="methodsTable">
