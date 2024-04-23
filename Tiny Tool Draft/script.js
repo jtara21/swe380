@@ -1,6 +1,13 @@
 let classes = [];
+let resultsDisplayed = false;
+
 
 function displayResults() {
+	
+	if(resultsDisplayed){
+		return;
+	}
+	
     // Get the table
     let table = document.getElementById("metricsTable");
 
@@ -12,14 +19,20 @@ function displayResults() {
         headerRow.appendChild(th);
     }
 
+
     // Add new data cells (td) for each class in the array
-    for (let i = 1; i < table.rows.length; i++) {
-        for (let j = 0; j < classes.length; j++) {
-            let td = document.createElement("td");
-            td.innerHTML = "-";
-            table.rows[i].appendChild(td);
-        }
+    for (let j = 0; j < classes.length; j++) {
+        let td = document.createElement("td");
+        td.innerHTML = classes[j].depth;
+        table.rows[1].appendChild(td);
     }
+	for (let j = 0; j < classes.length; j++) {
+        let td = document.createElement("td");
+        td.innerHTML = classes[j].numberOfChildren;
+        table.rows[2].appendChild(td);
+    }
+	
+	resultsDisplayed = true;
 }
 
 //LCM Page
@@ -60,10 +73,10 @@ function updateAssociationsTable() {
     });
 }
 
-function calculateLCM() {
-    // Implement LCM calculation logic here based on the associations
-    const lcmScore = calculateLCMScore(associations); // You will need to define this function
-    document.getElementById('lcmScore').querySelector('span').textContent = lcmScore;
+function calculateLCOM() {
+    // Implement LCOM calculation logic here based on the associations
+    const lcomScore = calculateLCOMScore(associations); // You will need to define this function
+    document.getElementById('lcomScore').querySelector('span').textContent = lcomScore;
 }
 
 
@@ -121,15 +134,9 @@ function addClass() {
 
     const newClass = {
         name: className,
-	parentRef: classes[indexOfParent],
-	depth: 0,
-	numberOfChildren: 0,
-	WMC: 0,
-	LCM: 0,
-	RFC: 0,
-	CBO: 0,
-	methods: [],
-	attributes: [],
+		parentRef: classes[indexOfParent],
+		depth: 0,
+		numberOfChildren: 0,
     };
 	
 	
@@ -223,6 +230,10 @@ function loadDataFromSession() {
     }
 }
 
+// Next page
+function goToWeightPerMethodPage() {
+    window.location.href = 'WMC.html'; // Redirects to the Weight per Method page
+}
 
 //WMC page
 document.addEventListener('DOMContentLoaded', function() {
