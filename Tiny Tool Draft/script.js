@@ -200,17 +200,6 @@ function loadDataFromSession() {
     }
 }
 
-// Ensure data loads when the page loads
-window.onload = function() {
-	sessionLoadInheritanceData();
-	loadDataFromSession();
-	if(window.location.pathname.includes('/DIT&NOC.html')){
-		updateParentClassDropdown();
-	}
-	updateMethodsTable(); //Update methods table if there's another function to do so
-	
-}
-
 // Next page
 function goToWeightPerMethodPage() {
     window.location.href = 'WMC.html'; // Redirects to the Weight per Method page
@@ -364,3 +353,13 @@ document.querySelectorAll('.help-nav a').forEach(anchor => {
         });
     });
 });
+
+// Ensure data loads when the page loads
+window.onload = function() {
+	sessionLoadInheritanceData();
+	loadDataFromSession();
+	if(window.location.pathname.includes('/DIT&NOC.html')){
+		updateParentClassDropdown();
+	}
+	updateMethodsTable(); //Update methods table if there's another function to do so	
+}
