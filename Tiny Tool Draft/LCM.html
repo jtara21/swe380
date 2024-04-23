@@ -51,27 +51,29 @@
                     attribute.</p>
             
             <div id="lcm">
-
-                <label for="selectedClass">Select Class:</label>
-                <br>
-                <select id="classDropdown" name="selectedClass">
+                <form id="classForm">
+                    <label for="selectedClass">Select Class:</label>
+                    <br>
+                    <select id="classDropdown" name="selectedClass">
                      <!-- Class options added by JavaScript -->
-                </select>
-                <br><br>
+                    </select>
+                    <br><br>
                 
-                <label for="methodSelect">Method:</label>
-                <select id="methodSelect">
-                    <option value="">--Select a Method--</option>
-                    <!-- Method options will be populated here -->
-                </select>
+                    <label for="methodSelect">Method:</label>
+                    <select id="methodSelect">
+                        <option value="">--Select a Method--</option>
+                        <!-- Method options will be populated here -->
+                    </select>
         
-                <label for="attributeSelect">Attribute:</label>
-                <select id="attributeSelect">
-                    <option value="">--Select an Attribute--</option>
-                    <!-- Attribute options will be populated here -->
-                </select>
+                    <label for="attributeSelect">Attribute:</label>
+                    <select id="attributeSelect">
+                        <option value="">--Select an Attribute--</option>
+                        <!-- Attribute options will be populated here -->
+                    </select>
         
-                <button onclick="addMethodAttribute()">Add Association</button>
+                    <button onclick="addMethodAttribute()">Add Association</button>
+
+                </form>
             </div>
         
             <table id="associationsTable">
