@@ -104,6 +104,19 @@ function updateParentClassDropdown() {
     });
 }
 
+function sessionSaveInheritanceData(){
+    // Save the data to session storage
+    sessionStorage.setItem('inheritanceData', JSON.stringify(classes));
+	console.log('saved');
+}
+
+function sessionLoadInheritanceData(){
+	if (sessionStorage.getItem('inheritanceData')){
+		classes = JSON.parse(sessionStorage.getItem('inheritanceData'));
+		console.log(classes);
+	}
+}
+
 function addClass() {
     const className = document.getElementById('className').value.trim();
     const parentClassName = document.getElementById('parentClass').value;
@@ -131,7 +144,9 @@ function addClass() {
     document.getElementById('className').value = '';
     document.getElementById('parentClass').value = '';
 
-    console.log(classes); // For debugging
+    //console.log(classes); // For debugging
+	
+	sessionSaveInheritanceData();
 }
 
 function removeClass() {
@@ -207,7 +222,13 @@ function loadDataFromSession() {
 }
 
 // Ensure data loads when the page loads
-window.onload = loadDataFromSession();
+window.onload = function() {
+	sessionLoadInheritanceData();
+	loadDataFromSession();
+	if(window.location.pathname.includes('/DIT&NOC.html')){
+		updateParentClassDropdown();
+	}
+}
 
 // Next page
 function goToWeightPerMethodPage() {
