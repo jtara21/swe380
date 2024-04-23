@@ -47,18 +47,15 @@
                     number of nodes for that method. The nodes are all of the possible sections of code the method might 
                     run, and the edges are all of the paths between those sections of code. An example of using edges and nodes 
                     to calculate cyclomatic complexity is shown below.</p>
-           <div id ="wmc">
-                               <form>
-                    <input type="radio" id="simpleCalc" name="calcType" value="simple" checked> Simple Calculation
-                    <input type="radio" id="complexCalc" name="calcType" value="complex"> Cyclomatic Complexity
-                </form>
-                
+          
+                <div id ="wmc">
                     <label>
                         <input type="checkbox" id="enableComplex" onchange="toggleComplexityInputs()">
                         Enable Complex Calculation
                     </label>
                     <br> 
                     <br>
+                    
                     <table id="methodsTable">
                         <thead>
                             <tr>
