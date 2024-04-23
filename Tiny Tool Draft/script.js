@@ -1,24 +1,26 @@
-//Home page table results template
-function displayResults() {
-    // Simulated results data
-    let table = document.getElementById('metricsTable');
-    let rows = table.getElementsByTagName('tr');
-    let head = document.createElement('th');
-    const results = {
-        DIT: '5 levels',
-        NOC: '3 children',
-        CBO: '2 objects',
-        RFC: '10 methods',
-        LCOM: 'Low cohesion',
-        WMC: 'High complexity'
-    };
+let classes = [];
 
-    // Displaying the results in the table
-    for (const metric in results) {
-        document.getElementById(metric).textContent = results[metric];
+function displayResults() {
+    // Get the table
+    let table = document.getElementById("metricsTable");
+
+    // Add new header cells (th) for each class in the array
+    let headerRow = table.rows[0];
+    for (let i = 0; i < classes.length; i++) {
+        let th = document.createElement("th");
+        th.innerHTML = classes[i].name;
+        headerRow.appendChild(th);
+    }
+
+    // Add new data cells (td) for each class in the array
+    for (let i = 1; i < table.rows.length; i++) {
+        for (let j = 0; j < classes.length; j++) {
+            let td = document.createElement("td");
+            td.innerHTML = "-";
+            table.rows[i].appendChild(td);
+        }
     }
 }
-
 
 //LCM Page
 let associations = [];
@@ -69,7 +71,6 @@ function calculateLCOM() {
 
 
 //DIT and NOC page
-let classes = [];
 
 function updateClassDropdown() {
     const dropdown = document.getElementById('classDropdown');
@@ -110,11 +111,25 @@ function addClass() {
         alert("Class name already exists.");
         return;
     }
+	
+	/*
+	// if a parent was chosen, get the iundex of the parent in the array
+	if (parentClassName != '') {
+		var indexOfParent = classes.findIndex(cls => cls.name === parentClassName);
+    }
+	*/
 
     const newClass = {
         name: className,
-        parentName: parentClassName,
+		//parentRef: classes[indexOfParent],
+		depth: 0
     };
+	
+	/*
+	if (parentClassName != '') {
+		newClass.depth = newclass.parentRef.depth + 1;
+	}
+	*/
 
     classes.push(newClass);
     updateClassDropdown(); // Update dropdown after adding a class
