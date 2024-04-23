@@ -1,24 +1,3 @@
-/*let numberOfClasses = 2;
-
-function addColumn() {
-    let table = document.getElementById('mainTable');
-    let rows = table.getElementsByTagName('tr');
-
-    let head = document.createElement('th');
-    head.className = "table-cell";
-    head.textContent = "Class " + numberOfClasses;
-    rows[0].appendChild(head);
-    numberOfClasses++;
-
-    for (let i = 1; i < rows.length; i++) {
-        let cell = document.createElement('td');
-        cell.className = "table-cell";
-        cell.innerHTML = '<input type="text">';
-        rows[i].appendChild(cell);
-    }
-}*/
-
-
 //Home page table results template
 function displayResults() {
     // Simulated results data
@@ -228,6 +207,8 @@ window.onload = function() {
 	if(window.location.pathname.includes('/DIT&NOC.html')){
 		updateParentClassDropdown();
 	}
+	updateMethodsTable(); //Update methods table if there's another function to do so
+	
 }
 
 // Next page
