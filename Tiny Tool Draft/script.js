@@ -222,17 +222,6 @@ function updateClassDropdown() {
 // Call this function once your page data is ready
 updateClassDropdown();
 
-
-
-
-
-
-//Weighted Method per class
-window.onload = function() {
-    loadDataFromSession();
-    updateMethodsTable();
-};
-
 //WMC page
 document.addEventListener('DOMContentLoaded', function() {
     loadMethodsFromSession();
