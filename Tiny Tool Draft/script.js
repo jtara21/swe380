@@ -71,15 +71,15 @@ function calculateLCOM() {
 //DIT and NOC page
 let classes = [];
 
-function updateParentClassDropdown() {
-    const parentClassDropdown = document.getElementById('parentClass');
-    parentClassDropdown.innerHTML = '<option value="">None (root class)</option>'; // Reset
+function updateClassDropdown() {
+    const dropdown = document.getElementById('classDropdown');
+    dropdown.innerHTML = '<option value="">None</option>'; // Reset
 
     classes.forEach(cls => {
         const option = document.createElement('option');
         option.value = cls.name;
         option.textContent = cls.name;
-        parentClassDropdown.appendChild(option);
+        dropdown.appendChild(option);
     });
 }
 
@@ -98,7 +98,7 @@ function sessionLoadInheritanceData(){
 
 function addClass() {
     const className = document.getElementById('className').value.trim();
-    const parentClassName = document.getElementById('parentClass').value;
+    const parentClassName = document.getElementById('classDropdown').value;
 
     if (className === "") {
         alert("Please enter a class name.");
@@ -117,11 +117,11 @@ function addClass() {
     };
 
     classes.push(newClass);
-    updateParentClassDropdown(); // Update dropdown after adding a class
+    updateClassDropdown(); // Update dropdown after adding a class
 
     // Reset input fields
     document.getElementById('className').value = '';
-    document.getElementById('parentClass').value = '';
+    document.getElementById('classDropdown').value = '';
 
     //console.log(classes); // For debugging
 	
@@ -132,7 +132,7 @@ function removeClass() {
     const classNameToRemove = document.getElementById('className').value.trim();
 
     classes = classes.filter(cls => cls.name !== classNameToRemove);
-    updateParentClassDropdown(); // Update dropdown after removing a class
+    updateClassDropdown()(); // Update dropdown after removing a class
 
     // Reset input fields
     document.getElementById('className').value = '';
@@ -204,23 +204,6 @@ function loadDataFromSession() {
 function goToWeightPerMethodPage() {
     window.location.href = 'WMC.html'; // Redirects to the Weight per Method page
 }
-
-
-
-// Function to update class dropdown based on your class data
-function updateClassDropdown() {
-    const classDropdown = document.getElementById('selectedClass');
-    // Assume you have a getClassNames function that returns an array of class names
-    const classNames = getClassNames(); // You need to implement this function
-    classNames.forEach(className => {
-        const option = document.createElement('option');
-        option.value = className;
-        option.textContent = className;
-        classDropdown.appendChild(option);
-    });
-}
-// Call this function once your page data is ready
-updateClassDropdown();
 
 //WMC page
 document.addEventListener('DOMContentLoaded', function() {
@@ -348,8 +331,5 @@ document.querySelectorAll('.help-nav a').forEach(anchor => {
 window.onload = function() {
 	sessionLoadInheritanceData();
 	loadDataFromSession();
-	if(window.location.pathname.includes('/DIT&NOC.html')){
-		updateParentClassDropdown();
-	}
-	updateMethodsTable(); //Update methods table if there's another function to do so	
+	updateClassDropdown();
 }
