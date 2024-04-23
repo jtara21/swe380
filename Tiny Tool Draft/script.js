@@ -112,24 +112,26 @@ function addClass() {
         return;
     }
 	
-	/*
+	
 	// if a parent was chosen, get the iundex of the parent in the array
 	if (parentClassName != '') {
 		var indexOfParent = classes.findIndex(cls => cls.name === parentClassName);
     }
-	*/
+	
 
     const newClass = {
         name: className,
-		//parentRef: classes[indexOfParent],
-		depth: 0
+		parentRef: classes[indexOfParent],
+		depth: 0,
+		numberOfChildren: 0,
     };
 	
-	/*
+	
 	if (parentClassName != '') {
-		newClass.depth = newclass.parentRef.depth + 1;
+		newClass.depth = newClass.parentRef.depth + 1;
+		newClass.parentRef.numberOfChildren++;
 	}
-	*/
+	
 
     classes.push(newClass);
     updateClassDropdown(); // Update dropdown after adding a class
@@ -138,7 +140,7 @@ function addClass() {
     document.getElementById('className').value = '';
     document.getElementById('classDropdown').value = '';
 
-    //console.log(classes); // For debugging
+    console.log(classes); // For debugging
 	
 	sessionSaveInheritanceData();
 }
@@ -346,8 +348,6 @@ document.querySelectorAll('.help-nav a').forEach(anchor => {
 window.onload = function() {
 	sessionLoadInheritanceData();
 	loadDataFromSession();
-	console.log(window.location.href);
-	console.log(window.location.pathname);
 	if ((!window.location.href.includes('Home.html')) && (!window.location.href.includes('help.html'))){
 		updateClassDropdown();
 	}
