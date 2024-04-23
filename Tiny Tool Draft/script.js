@@ -22,32 +22,32 @@ function displayResults() {
 
     // Add new data cells (td) for each class in the array
     for (let j = 0; j < classes.length; j++) {
-        let td = document.createElement("td");
+        let td = document.createElement('td');
         td.innerHTML = classes[j].depth;
         table.rows[1].appendChild(td);
     }
 	for (let j = 0; j < classes.length; j++) {
-        let td = document.createElement("td");
+        let td = document.createElement('td');
         td.innerHTML = classes[j].numberOfChildren;
         table.rows[2].appendChild(td);
     }
 	for (let j = 0; j < classes.length; j++) {
-        let td = document.createElement("td");
+        let td = document.createElement('td');
         td.innerHTML = classes[j].WMC;
         table.rows[3].appendChild(td);
     }
 	for (let j = 0; j < classes.length; j++) {
-        let td = document.createElement("td");
+        let td = document.createElement('td');
         td.innerHTML = classes[j].LCM;
         table.rows[4].appendChild(td);
     }
 	for (let j = 0; j < classes.length; j++) {
-        let td = document.createElement("td");
+        let td = document.createElement('td');
         td.innerHTML = classes[j].RFC;
         table.rows[5].appendChild(td);
     }
 	for (let j = 0; j < classes.length; j++) {
-        let td = document.createElement("td");
+        let td = document.createElement('td');
         td.innerHTML = classes[j].CBO;
         table.rows[6].appendChild(td);
     }
