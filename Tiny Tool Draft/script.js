@@ -60,10 +60,10 @@ function updateAssociationsTable() {
     });
 }
 
-function calculateLCOM() {
-    // Implement LCOM calculation logic here based on the associations
-    const lcomScore = calculateLCOMScore(associations); // You will need to define this function
-    document.getElementById('lcomScore').querySelector('span').textContent = lcomScore;
+function calculateLCM() {
+    // Implement LCM calculation logic here based on the associations
+    const lcmScore = calculateLCMScore(associations); // You will need to define this function
+    document.getElementById('lcmScore').querySelector('span').textContent = lcmScore;
 }
 
 
