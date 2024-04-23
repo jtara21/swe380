@@ -134,9 +134,15 @@ function addClass() {
 
     const newClass = {
         name: className,
-		parentRef: classes[indexOfParent],
-		depth: 0,
-		numberOfChildren: 0,
+	parentRef: classes[indexOfParent],
+	depth: 0,
+	numberOfChildren: 0,
+	WMC: 0,
+	LCM: 0,
+	RFC: 0,
+	CBO: 0,
+	methods: [],
+	attributes: [],
     };
 	
 	
