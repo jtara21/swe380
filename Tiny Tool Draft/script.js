@@ -386,7 +386,7 @@ document.querySelectorAll('.help-nav a').forEach(anchor => {
 // Ensure data loads when the page loads
 window.onload = function() {
 	sessionLoadInheritanceData();
-	loadDataFromSession();
+	//loadDataFromSession();
 	if ((!window.location.href.includes('Home.html')) && (!window.location.href.includes('help.html'))){
 		updateClassDropdown();
 	}
