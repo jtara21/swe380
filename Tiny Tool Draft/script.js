@@ -346,5 +346,9 @@ document.querySelectorAll('.help-nav a').forEach(anchor => {
 window.onload = function() {
 	sessionLoadInheritanceData();
 	loadDataFromSession();
-	updateClassDropdown();
+	console.log(window.location.href);
+	console.log(window.location.pathname);
+	if ((!window.location.href.includes('Home.html')) && (!window.location.href.includes('help.html'))){
+		updateClassDropdown();
+	}
 }
