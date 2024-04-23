@@ -49,29 +49,38 @@
                      using edges and nodes to calculate cyclomatic complexity is shown below.</p>
           
                 <div id ="wmc">
-                    <label>
-                        <input type="checkbox" id="enableComplex" onchange="toggleComplexityInputs()">
-                        Enable Complex Calculation
-                    </label>
-                    <br> 
-                    <br>
+                    <form id="classForm">
+
+                        <label for="selectedClass">Select Class:</label>
+                        <br>
+                        <select id="classDropdown" name="selectedClass">
+                        <!-- Class options added by JavaScript -->
+                        </select>
+                        <br><br>
                     
-                    <table id="methodsTable">
-                        <thead>
-                            <tr>
-                                <th>Method Name</th>
-                                <th>Cyclomatic Complexity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        <label>
+                            <input type="checkbox" id="enableComplex" onchange="toggleComplexityInputs()">
+                            Enable Complex Calculation
+                        </label>
+                        <br><br>
+                    
+                        <table id="methodsTable">
+                            <thead>
+                                <tr>
+                                    <th>Method Name</th>
+                                    <th>Cyclomatic Complexity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                             <!-- Methods and complexities will be filled here -->
-                        </tbody>
-                    </table>
-                    <div class="button-container">
-                        <button onclick="calculateWMC()" id="calculateButton">Calculate WMC</button>
-                    </div>
-                    <div id="totalWMC">Total WMC: 0</div>
-           </div>
+                            </tbody>
+                        </table>
+                        <div class="button-container">
+                            <button onclick="calculateWMC()" id="calculateButton">Calculate WMC</button>
+                        </div>
+                        <div id="totalWMC">Total WMC: 0</div>
+                    </form>
+               </div>
                 <img src="Images/wmcImage.png">
     </main>
     </div>
