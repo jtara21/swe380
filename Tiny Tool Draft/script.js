@@ -217,10 +217,6 @@ function loadDataFromSession() {
     }
 }
 
-// Next page
-function goToWeightPerMethodPage() {
-    window.location.href = 'WMC.html'; // Redirects to the Weight per Method page
-}
 
 //WMC page
 document.addEventListener('DOMContentLoaded', function() {
