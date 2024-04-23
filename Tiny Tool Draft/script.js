@@ -326,6 +326,7 @@ function saveWMCData() {
     };
 
     sessionStorage.setItem('wmcData', JSON.stringify(wmcSessionData));
+}
 
 //retrieve data
 function loadMethodsFromSession() {
