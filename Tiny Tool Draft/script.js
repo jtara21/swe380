@@ -172,7 +172,7 @@ function saveMethodsAndAttributes(){
 	for(let i=methodsLength+1; i < table.rows.length; i++){
 		
 		let row = table.rows[i];
-		let methodInput = row.cells[0].getElementsByClassName('input-method')[0];
+		let methodInput = [row.cells[0].getElementsByClassName('input-method')[0],0];
 		let attributeInput = row.cells[1].getElementsByClassName('input-attribute')[0];
 		
 		classes[indexOfClass].methods.push(methodInput.value);
@@ -197,7 +197,7 @@ function displayClassMethodsAndAttributes(){
 			const newRow = tableBody.insertRow();
 			const methodCell = newRow.insertCell(0);
 			const attributeCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i];
+			let method = classes[indexOfClass].methods[i,0];
 			let attribute = classes[indexOfClass].attributes[i];
 			
 			console.log(method + ' ' + attribute);
@@ -210,6 +210,32 @@ function displayClassMethodsAndAttributes(){
 
 
 //WMC Page
+
+/*function displayClassMethodsAndComplexities(){
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let arrayLength = classes[indexOfClass].methods.length;
+	const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
+	
+	while(tableBody.rows.length){
+		tableBody.deleteRow(0);
+	}
+		
+	if(arrayLength){
+		for(let i=0; i < arrayLength; i++){
+			const newRow = tableBody.insertRow();
+			const methodCell = newRow.insertCell(0);
+			const attributeCell = newRow.insertCell(1);
+			let method = classes[indexOfClass].methods[i];
+			let attribute = classes[indexOfClass].attributes[i];
+			
+			console.log(method + ' ' + attribute);
+
+			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
+			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+		}
+	}
+}*/
 
 function toggleComplexityInputs() {
     const isChecked = document.getElementById('enableComplex').checked;
@@ -301,7 +327,7 @@ function addMethodAttribute() {
 }
 */
 
-function displayClassMethodsAndCohesion(){
+/*function displayClassMethodsAndCohesion(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let mLength = classes[indexOfClass].methods.length;
@@ -335,7 +361,7 @@ function displayClassMethodsAndCohesion(){
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
 		}
 	}
-}
+}*/
 
 function updateAssociationsTable() {
     const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
