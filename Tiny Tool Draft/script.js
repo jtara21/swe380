@@ -453,7 +453,7 @@ function CalculateLCM() {
 }
 
 // CBO Page
-function displayLCMTable(){
+function displayCBOTable(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let methods = classes[indexOfClass].methods;
