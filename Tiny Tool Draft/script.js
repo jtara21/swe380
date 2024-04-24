@@ -301,24 +301,24 @@ function addMethodAttribute() {
 }
 */
 
-/*function displayClassMethodsAndCohesion(){
+function displayClassMethodsAndCohesion(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let mLength = classes[indexOfClass].methods.length;
 	let aLength = classes[indexOfClass].attributes.length;
 	const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
-	const tableHead = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
+	const tableHead = document.getElementById('LCMTable').getElementsByTagName('thead')[0];
 	
 	while(tableBody.rows.length){
 		tableBody.deleteRow(0);
 	}
 	if(aLength){
 		for(let i=0; i < aLength; i++){
-			const newColumn = tableBody.insertColumn();
+			const newColumn = tableHead.insertColumn();
 			const attributeCell = newColumn.insertCell(0);
 			let attribute = classes[indexOfClass].attributes[i];
 			
-			console.log(attribute);
+			//console.log(attribute);
 
 			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
 		}
@@ -328,12 +328,12 @@ function addMethodAttribute() {
 			const methodCell = newRow.insertCell(0);
 			let method = classes[indexOfClass].methods[i];
 			
-			console.log(method);
+			//console.log(method);
 
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
 		}
 	}
-}*/
+}
 
 function updateAssociationsTable() {
     const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
