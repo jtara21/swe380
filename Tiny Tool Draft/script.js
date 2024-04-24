@@ -211,7 +211,7 @@ function displayClassMethodsAndAttributes(){
 
 //WMC Page
 
-/*function displayClassMethodsAndComplexities(){
+function displayClassMethodsAndComplexities(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let arrayLength = classes[indexOfClass].methods.length;
@@ -235,7 +235,7 @@ function displayClassMethodsAndAttributes(){
 			complexityCell.innerHTML = `<div class="input-attribute">${complexity}</div>`;
 		}
 	}
-}*/
+}
 
 function toggleComplexityInputs() {
     const isChecked = document.getElementById('enableComplex').checked;
