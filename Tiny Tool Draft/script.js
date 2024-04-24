@@ -1,6 +1,7 @@
 let classes = [];
 let resultsDisplayed = false;
 
+//Home Page
 
 function displayResults() {
 	
@@ -54,55 +55,6 @@ function displayResults() {
 	
 	resultsDisplayed = true;
 }
-
-//LCM Page
-let associations = [];
-
-/*
-function addMethodAttribute() {
-    const methodSelect = document.getElementById('methodSelect');
-    const attributeSelect = document.getElementById('attributeSelect');
-    const method = methodSelect.value;
-    const attribute = attributeSelect.value;
-
-    if (!method || !attribute) {
-        alert("Please select both a method and an attribute.");
-        return;
-    }
-
-    // Prevent duplicate entries
-    const associationExists = associations.some(assoc => assoc.method === method && assoc.attribute === attribute);
-    if (associationExists) {
-        alert("This association has already been added.");
-        return;
-    }
-
-    associations.push({ method, attribute });
-    updateAssociationsTable();
-}
-*/
-
-function updateAssociationsTable() {
-    const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Clear existing entries
-
-    associations.forEach(assoc => {
-        const row = tableBody.insertRow();
-        const methodCell = row.insertCell(0);
-        const attributeCell = row.insertCell(1);
-        methodCell.textContent = assoc.method;
-        attributeCell.textContent = assoc.attribute;
-    });
-}
-
-function calculateLCM() {
-    // Implement LCM calculation logic here based on the associations
-    const lcmScore = calculateLCMScore(associations); // You will need to define this function
-    document.getElementById('lcmScore').querySelector('span').textContent = lcmScore;
-}
-
-
-
 
 
 //DIT and NOC page
@@ -256,10 +208,8 @@ function displayClassMethodsAndAttributes(){
 	}
 }
 
-// Next page
-function goToWeightPerMethodPage() {
-    window.location.href = 'WMC.html'; // Redirects to the Weight per Method page
-}
+
+//WMC Page
 
 function toggleComplexityInputs() {
     const isChecked = document.getElementById('enableComplex').checked;
@@ -322,6 +272,78 @@ function saveWMCData() {
     };
 
     sessionStorage.setItem('wmcData', JSON.stringify(wmcSessionData));
+}
+
+//LCM Page
+let associations = [];
+
+/*
+function addMethodAttribute() {
+    const methodSelect = document.getElementById('methodSelect');
+    const attributeSelect = document.getElementById('attributeSelect');
+    const method = methodSelect.value;
+    const attribute = attributeSelect.value;
+
+    if (!method || !attribute) {
+        alert("Please select both a method and an attribute.");
+        return;
+    }
+
+    // Prevent duplicate entries
+    const associationExists = associations.some(assoc => assoc.method === method && assoc.attribute === attribute);
+    if (associationExists) {
+        alert("This association has already been added.");
+        return;
+    }
+
+    associations.push({ method, attribute });
+    updateAssociationsTable();
+}
+*/
+
+function displayClassMethodsAndCohesion(){
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let arrayLength = classes[indexOfClass].methods.length;
+	const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
+	
+	while(tableBody.rows.length){
+		tableBody.deleteRow(0);
+	}
+		
+	if(arrayLength){
+		for(let i=0; i < arrayLength; i++){
+			const newRow = tableBody.insertRow();
+			const methodCell = newRow.insertCell(0);
+			const attributeCell = newRow.insertCell(1);
+			let method = classes[indexOfClass].methods[i];
+			let attribute = classes[indexOfClass].attributes[i];
+			
+			console.log(method + ' ' + attribute);
+
+			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
+			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+		}
+	}
+}
+
+function updateAssociationsTable() {
+    const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Clear existing entries
+
+    associations.forEach(assoc => {
+        const row = tableBody.insertRow();
+        const methodCell = row.insertCell(0);
+        const attributeCell = row.insertCell(1);
+        methodCell.textContent = assoc.method;
+        attributeCell.textContent = assoc.attribute;
+    });
+}
+
+function calculateLCM() {
+    // Implement LCM calculation logic here based on the associations
+    const lcmScore = calculateLCMScore(associations); // You will need to define this function
+    document.getElementById('lcmScore').querySelector('span').textContent = lcmScore;
 }
 
 
