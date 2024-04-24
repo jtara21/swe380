@@ -319,19 +319,19 @@ function displayLCMTable(){
         var headerRow = header.insertRow();
 	var emptyCell = headerRow.insertCell();
         attributes.forEach(function(attribute) {
-        	var cell = headerRow.insertCell();
-                cell.textContent = attribute;
+        	var colHead = headerRow.insertCell();
+                colHead.textContent = attribute;
         });
 	
 	methods.forEach(function(method, methodIndex) {
         	var row = table.insertRow();
-        	var cell = row.insertCell();
-        	cell.textContent = method;
+        	var rowHead = row.insertCell();
+        	rowHead.textContent = method;
 
         	// Add dropdown boxes to each cell (except for the header row and header column)
         	for (var i = 0; i < attributes.length; i++) {
-            		var cell = row.insertCell();
-            		if (methodIndex > 0 && i > 0) {
+            		var newCell = row.insertCell();
+            		if (i > 0) {
                 		var select = document.createElement("select");
                 		var optionYes = document.createElement("option");
                 		optionYes.text = "Yes";
@@ -339,7 +339,7 @@ function displayLCMTable(){
                 		var optionNo = document.createElement("option");
                 		optionNo.text = "No";
                 		select.add(optionNo);
-                		cell.appendChild(select);
+                		newCell.appendChild(select);
             		}
         	}
     	});
