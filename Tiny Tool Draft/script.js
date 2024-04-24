@@ -361,14 +361,15 @@ function SaveLCMTable() {
 		let row = table.rows[i];
 		let tempAssoc2 = [];
 		
-		for (let j = 1 ; j < attributes.length ; j++) {
-			let cell = row.cells[j].getElementByTagName('td');
-			let select = cell.querySelector("select");
-                	let selectedIndex = select.selectedIndex;
-                	let selectedOption = select.options[selectedIndex];
-                	let value = selectedOption.text === "Yes" ? 1 : 0;
-			tempAssoc2.push(value);
-		}
+		let cells = row.querySelectorAll("td");
+                cells.forEach(function(cell, cellIndex) {
+                    if (cellIndex > 0) { // Skip header column
+                        let select = cell.querySelector("select");
+                        let selectedIndex = select.selectedIndex;
+                        let selectedOption = select.options[selectedIndex];
+                        let value = selectedOption.text === "Yes" ? 1 : 0;
+                        tempAssoc2.push(value);
+                }
 		tempAssoc.push(tempAssoc2);
 	}
 	associations[indexOfClass] = tempAssoc;
