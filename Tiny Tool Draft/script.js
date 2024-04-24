@@ -409,14 +409,14 @@ function CalculateLCM() {
 	let cohesion = [];
 	for (let m1 = 0 ; m1 < mLen ; m1++) {
 		let tempCohesion = [];
-		for (let m2 = m1 + 1 ; m2 < mLen ; m2++){
+		for (let m2 = 0 ; m2 < mLen ; m2++){
 			let value = 0;
 			for (let att = 0 ; att < aLen ; att++){
 				if (associations[indexOfClass][m1][att] == 1 && associations[indexOfClass][m2][att] == 1) {
 					value = 1;
 				}
-			tempCohesion.push(value);
 			}
+			tempCohesion.push(value);
 		}
 		cohesion.push(tempCohesion);
 	}
