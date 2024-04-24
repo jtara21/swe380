@@ -175,7 +175,7 @@ function saveMethodsAndAttributes(){
 		let methodInput = row.cells[0].getElementsByClassName('input-method')[0];
 		let attributeInput = row.cells[1].getElementsByClassName('input-attribute')[0];
 		
-		classes[indexOfClass].methods.push(methodInput.value);
+		classes[indexOfClass].methods.push([methodInput.value,0]);
 		classes[indexOfClass].attributes.push(attributeInput.value);
 	}
 	
@@ -197,7 +197,7 @@ function displayClassMethodsAndAttributes(){
 			const newRow = tableBody.insertRow();
 			const methodCell = newRow.insertCell(0);
 			const attributeCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i];
+			let method = classes[indexOfClass].methods[i,0];
 			let attribute = classes[indexOfClass].attributes[i];
 			
 			console.log(method + ' ' + attribute);
@@ -303,7 +303,7 @@ function saveWMCData() {
 //LCM Page
 let associations = [];
 
-function displayLCMTest(){
+/*function displayLCMTest(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let arrayLength = classes[indexOfClass].methods.length;
@@ -327,7 +327,7 @@ function displayLCMTest(){
 			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
 		}
 	}
-}
+}*/
 
 /*
 function addMethodAttribute() {
