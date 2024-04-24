@@ -304,31 +304,36 @@ function saveWMCData() {
 //LCM Page
 let associations = [];
 
-/*function displayLCMTest(){
+function displayLCMTest(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	let arrayLength = classes[indexOfClass].methods.length;
-	const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
+	let mLength = classes[indexOfClass].methods.length;
+	let aLength = classes[indexOfClass].attributes.length;
+	const table = document.getElementById('methodsAndAttributesTable');
 	
-	while(tableBody.columns.length){
-		tableBody.deleteColumn(0);
+	while(table.rows.length>0){
+		table.deleteRow(0);
 	}
-		
-	if(arrayLength){
-		for(let i=0; i < arrayLength; i++){
-			const newRow = tableBody.insertColumn();
-			const methodCell = newRow.insertCell(0);
-			const attributeCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i];
+	var header = table.createTHead();
+ 	var headRow = header.insertRow(0);
+	
+	if(aLength){
+		for(let i=0; i < aLength; i++){
+			const ColHead = headRow.insertCell();
 			let attribute = classes[indexOfClass].attributes[i];
-			
-			console.log(method + ' ' + attribute);
-
-			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
-			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+			ColHead.textcontent = attribute;
 		}
 	}
-}*/
+	
+	if(mLength){
+		for(let i=0; i < mLength; i++){
+			const newRow = table.insertRow();
+			const RowHead = newRow.insertCell();
+			let method = classes[indexOfClass].methods[i];
+			RowHead.textcontent = method;
+		}
+	}
+}
 
 /*
 function addMethodAttribute() {
