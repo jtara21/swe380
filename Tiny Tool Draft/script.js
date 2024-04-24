@@ -449,7 +449,8 @@ function CalculateLCM() {
 		}
 	}
 	classes[indexOfClass].LCM = LCM;
-	console.log(LCM)
+	console.log('LCM=' + LCM);
+	sessionSaveData();
 }
 
 // CBO Page
