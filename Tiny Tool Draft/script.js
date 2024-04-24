@@ -331,16 +331,14 @@ function displayLCMTable(){
         	// Add dropdown boxes to each cell (except for the header row and header column)
         	for (var i = 0; i < attributes.length; i++) {
             		var newCell = row.insertCell();
-            		if (i > 0) {
-                		var select = document.createElement("select");
-                		var optionYes = document.createElement("option");
-                		optionYes.text = "Yes";
-                		select.add(optionYes);
-                		var optionNo = document.createElement("option");
-                		optionNo.text = "No";
-                		select.add(optionNo);
-                		newCell.appendChild(select);
-            		}
+                	var select = document.createElement("select");
+                	var optionYes = document.createElement("option");
+                	optionYes.text = "Yes";
+                	select.add(optionYes);
+                	var optionNo = document.createElement("option");
+                	optionNo.text = "No";
+                	select.add(optionNo);
+                	newCell.appendChild(select);
         	}
     	});
 }
