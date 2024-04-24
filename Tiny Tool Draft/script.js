@@ -1,14 +1,6 @@
 let classes = [];
 let resultsDisplayed = false;
 
-function testFunc(){
-	const className = document.getElementById('classDropdown').value;
-	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	if((classes[indexOfClass].methods.length > 0) || (classes[indexOfClass].attributes.length > 0)){
-		console.log(indexOfClass);
-	}
-}
-
 
 function displayResults() {
 	
@@ -130,7 +122,7 @@ function updateClassDropdown() {
 function sessionSaveData(){
     // Save the data to session storage
     sessionStorage.setItem('inheritanceData', JSON.stringify(classes));
-	console.log('saved');
+	console.log(classes);
 }
 
 function sessionLoadData(){
@@ -188,8 +180,6 @@ function addClass() {
     // Reset input fields
     document.getElementById('className').value = '';
     document.getElementById('classDropdown').value = '';
-
-    console.log(classes); // For debugging
 	
 	sessionSaveData();
 }
@@ -225,9 +215,44 @@ function saveMethodsAndAttributes(){
 	const table = document.getElementById('methodsAndAttributesTable');
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let methodsLength = classes[indexOfClass].methods.length;
 	
-	for(let i=1; i<table.rows.length; i++){
-		console.log('test' + i);
+	for(let i=methodsLength+1; i < table.rows.length; i++){
+		
+		let row = table.rows[i];
+		let methodInput = row.cells[0].getElementsByClassName('input-method')[0];
+		let attributeInput = row.cells[1].getElementsByClassName('input-attribute')[0];
+		
+		classes[indexOfClass].methods.push(methodInput.value);
+		classes[indexOfClass].attributes.push(attributeInput.value);
+	}
+	
+	sessionSaveData();
+}
+
+function displayClassMethodsAndAttributes(){
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let arrayLength = classes[indexOfClass].methods.length;
+	const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
+	
+	while(tableBody.rows.length){
+		tableBody.deleteRow(0);
+	}
+		
+	if(arrayLength){
+		for(let i=0; i < arrayLength; i++){
+			const newRow = tableBody.insertRow();
+			const methodCell = newRow.insertCell(0);
+			const attributeCell = newRow.insertCell(1);
+			let method = classes[indexOfClass].methods[i];
+			let attribute = classes[indexOfClass].attributes[i];
+			
+			console.log(method + ' ' + attribute);
+
+			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
+			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+		}
 	}
 }
 

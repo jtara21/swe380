@@ -50,17 +50,18 @@
         </tbody>
             <label for="selectedClass">Select Class:</label>
             <br>
-            <select id="classDropdown" name="selectedClass" onchange="testFunc()">
+            <select id="classDropdown" name="selectedClass" onchange="displayClassMethodsAndAttributes()">
                 <!-- Class options added by JavaScript -->
             </select>
             <br><br>
             
             <button onclick="addEditableRow()">Add New Row</button>
+			
             <table id="methodsAndAttributesTable">
                 <thead>
                     <tr>
-                        <th>Method Name</th>
-                        <th>Attribute Name</th>
+                        <th>Method Names</th>
+						<th>Attribute Names</th>
                     </tr>
                 </thead>
                 <tbody>
