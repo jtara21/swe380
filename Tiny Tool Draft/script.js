@@ -206,10 +206,16 @@ function displayClassMethodsAndAttributes(){
 			let attribute = classes[indexOfClass].attributes[i];
 
 			if (method){
-			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
+				methodCell.innerHTML = `<div class="input-method">${method}</div>`;
 			}
+			else {
+				methodCell.innerHTML = '<div class="input-method"></div>';
+			}	
 			if(attribute){
-			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+				attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+			}
+			else {
+				attributeCell.innerHTML = '<div class="input-attribute"></div>';
 			}
 		}
 	}
