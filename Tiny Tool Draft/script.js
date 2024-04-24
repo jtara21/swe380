@@ -324,6 +324,7 @@ function displayLCMTable(){
         	if (methodIndex === 0) {
             		var header = table.createTHead();
             		var headerRow = header.insertRow();
+			var emptyCell = headerRow.insertCell();
             		attributes.forEach(function(attribute) {
                 		var cell = headerRow.insertCell();
                 		cell.textContent = attribute;
