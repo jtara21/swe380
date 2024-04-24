@@ -200,8 +200,6 @@ function displayClassMethodsAndAttributes(){
 			const attributeCell = newRow.insertCell(1);
 			let method = classes[indexOfClass].methods[i];
 			let attribute = classes[indexOfClass].attributes[i];
-			
-			console.log(method + ' ' + attribute);
 
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
 			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
@@ -229,11 +227,9 @@ function displayClassMethodsAndComplexities(){
 			const complexityCell = newRow.insertCell(1);
 			let method = classes[indexOfClass].methods[i,0];
 			let complexity = classes[indexOfClass].methods[i,1];
-			
-			console.log(method + ' ' + complexity);
 
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
-			complexityCell.innerHTML = `<div class="input-attribute">${complexity}</div>`;
+			complexityCell.innerHTML = '<input type="number" min ="1" class="input-complexity">';
 		}
 	}
 }
@@ -244,62 +240,38 @@ function toggleComplexityInputs() {
     complexityInputs.forEach(input => {
         input.disabled = !isChecked;
     });
-    if (isChecked) {
-        // Save the state when switching to complex mode
-        saveWMCData();
-    }
 }
 
 function calculateWMC() {
-    const complexityInputs = document.querySelectorAll('.complexity-input');
+	const table = document.getElementById('WMCTable');
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+    let complexityInputs = [];
     let totalWMC = 0;
-    let wmcData = [];
 
-    if (!document.getElementById('enableComplex').checked) {
+	for(let i=1; i < table.rows.length; i++){
+	
+		let row = table.rows[i];
+		let complexity = row.cells[1].getElementsByClassName('input-complexity')[0];
+		
+		complexityInputs.push(complexity.value);
+	}
+	
+	classes[indexOfClass].complexities = complexityInputs;
+	
+	if (!document.getElementById('enableComplex').checked) {
         totalWMC = complexityInputs.length; // Simple calculation: count methods
-    } else {
-        complexityInputs.forEach(input => {
-            const methodName = input.closest('tr').cells[0].textContent;
-            const complexityValue = parseInt(input.value, 10) || 0;
-            totalWMC += complexityValue;
-            wmcData.push({
-                methodName: methodName,
-                complexity: complexityValue
-            });
-        });
-    }
+	}
+	else {
+		for(let i=0; i<complexityInputs.length; i++){
+			totalWMC += +complexityInputs[i];
+		}
+	}
 
-    const wmcSessionData = {
-        methods: wmcData,
-        totalWMC: totalWMC,
-        isComplex: document.getElementById('enableComplex').checked
-    };
-
-    sessionStorage.setItem('wmcData', JSON.stringify(wmcSessionData));
-    document.getElementById('totalWMC').textContent = 'Total WMC: ' + totalWMC;
+	classes[indexOfClass].WMC = totalWMC;
+	sessionSaveData();
 }
 
-function saveWMCData() {
-    const complexityInputs = document.querySelectorAll('.complexity-input');
-    let wmcData = [];
-
-    complexityInputs.forEach(input => {
-        const methodName = input.closest('tr').cells[0].textContent;
-        const complexityValue = parseInt(input.value, 10) || 0;
-        wmcData.push({
-            methodName: methodName,
-            complexity: complexityValue
-        });
-    });
-
-    const wmcSessionData = {
-        methods: wmcData,
-        totalWMC: document.getElementById('totalWMC').textContent.replace('Total WMC: ', ''),
-        isComplex: document.getElementById('enableComplex').checked
-    };
-
-    sessionStorage.setItem('wmcData', JSON.stringify(wmcSessionData));
-}
 
 //LCM Page
 let associations = [];
