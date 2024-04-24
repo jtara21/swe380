@@ -304,7 +304,7 @@ function saveWMCData() {
 //LCM Page
 let associations = [];
 
-function displayLCMTest(){
+function displayLCMTable(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let methods = classes[indexOfClass].methods;
@@ -315,18 +315,35 @@ function displayLCMTest(){
 		table.deleteRow(0);
 	}
 	
-	methods.forEach(function(method) {
+	methods.forEach(function(method, methodIndex) {
         	var row = table.insertRow();
         	var cell = row.insertCell();
-       		cell.textContent = method;
-	});
+        	cell.textContent = method;
 
-    	// Label the columns with the attributes array
-   	var header = table.createTHead();
-    	var row = header.insertRow(0);
-    	attributes.forEach(function(attribute) {
-        	var cell = row.insertCell();
-        	cell.textContent = attribute;
+        	// Label the columns with the attributes array
+        	if (methodIndex === 0) {
+            		var header = table.createTHead();
+            		var headerRow = header.insertRow();
+            		attributes.forEach(function(attribute) {
+                		var cell = headerRow.insertCell();
+                		cell.textContent = attribute;
+            		});
+        	}
+
+        	// Add dropdown boxes to each cell (except for the header row and header column)
+        	for (var i = 0; i < attributes.length; i++) {
+            		var cell = row.insertCell();
+            		if (methodIndex > 0 && i > 0) {
+                		var select = document.createElement("select");
+                		var optionYes = document.createElement("option");
+                		optionYes.text = "Yes";
+                		select.add(optionYes);
+                		var optionNo = document.createElement("option");
+                		optionNo.text = "No";
+                		select.add(optionNo);
+                		cell.appendChild(select);
+            		}
+        	}
     	});
 }
 
