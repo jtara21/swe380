@@ -175,7 +175,7 @@ function saveMethodsAndAttributes(){
 		let methodInput = row.cells[0].getElementsByClassName('input-method')[0];
 		let attributeInput = row.cells[1].getElementsByClassName('input-attribute')[0];
 		
-		classes[indexOfClass].methods.push([methodInput.value,0]);
+		classes[indexOfClass].methods.push(methodInput.value);
 		classes[indexOfClass].attributes.push(attributeInput.value);
 	}
 	
@@ -197,7 +197,7 @@ function displayClassMethodsAndAttributes(){
 			const newRow = tableBody.insertRow();
 			const methodCell = newRow.insertCell(0);
 			const attributeCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i,0];
+			let method = classes[indexOfClass].methods[i];
 			let attribute = classes[indexOfClass].attributes[i];
 			
 			console.log(method + ' ' + attribute);
