@@ -356,6 +356,11 @@ function displayLCMTable(){
     	});
 }
 
+function LCMButton(){
+	SaveLCMTable();
+	CalculateLCM();
+}
+
 function SaveLCMTable() {
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
@@ -387,6 +392,32 @@ function SaveLCMTable() {
 	}
 	associations[indexOfClass] = tempAssoc;
 	console.log(associations)
+}
+
+function CalculateLCM() {
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let methods = classes[indexOfClass].methods;
+	let attributes = classes[indexOfClass].attributes;
+	let mLen = classes[indexOfClass].methods.length;
+	let aLen = classes[indexOfClass].attributes.length;
+
+	let cohesion = [];
+	for (let m1 = 0 ; m1 < mLen ; m1++) {
+		let tempCohesion = [];
+		for (let m2 = m1 + 1 ; m2 < mLen ; m2++){
+			let value = 0;
+			for (let att = 0 ; att < aLen ; att++){
+				if (associations[indexOfClass][m1][att] == 1 && associations[indexOfClass][m2][att] == 1) {
+					value = 1;
+				}
+			tempCohesion.push(value);
+			}
+		}
+		cohesion.push(tempCohesion);
+	}
+	console.log(cohesion);
+	
 }
 
 
