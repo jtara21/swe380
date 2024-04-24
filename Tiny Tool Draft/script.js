@@ -309,6 +309,8 @@ function displayClassMethodsAndCohesion(){
 	const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
 	const tableHead = document.getElementById('LCMTable').getElementsByTagName('thead')[0];
 	
+	while(tableHead.columns.length){
+		tableBody.deleteColumn(0);
 	while(tableBody.rows.length){
 		tableBody.deleteRow(0);
 	}
