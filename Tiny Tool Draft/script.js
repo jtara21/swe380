@@ -421,7 +421,12 @@ function CalculateLCM() {
 		cohesion.push(tempCohesion);
 	}
 	console.log(cohesion);
-	
+
+	let Head = [];
+	for (let i = 0 ; i <mLen ; i++) {
+		Head.push(1)
+		
+	}
 }
 
 
