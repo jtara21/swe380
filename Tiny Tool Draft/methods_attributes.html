@@ -50,13 +50,13 @@
         </tbody>
             <label for="selectedClass">Select Class:</label>
             <br>
-            <select id="classDropdown" name="selectedClass">
+            <select id="classDropdown" name="selectedClass" onchange="testFunc()">
                 <!-- Class options added by JavaScript -->
             </select>
             <br><br>
             
             <button onclick="addEditableRow()">Add New Row</button>
-            <table id="dataTable">
+            <table id="methodsAndAttributesTable">
                 <thead>
                     <tr>
                         <th>Method Name</th>
@@ -67,8 +67,7 @@
                     <!-- Editable rows will be added here -->
                 </tbody>
             </table>
-            <button onclick="sessionSaveData()">Save Data</button>
-                        
+            <button onclick="saveMethodsAndAttributes()">Save Data</button>
             </div>
             <script src="script.js"></script>
         

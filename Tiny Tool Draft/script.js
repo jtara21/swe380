@@ -1,6 +1,14 @@
 let classes = [];
 let resultsDisplayed = false;
 
+function testFunc(){
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	if((classes[indexOfClass].methods.length > 0) || (classes[indexOfClass].attributes.length > 0)){
+		console.log(indexOfClass);
+	}
+}
+
 
 function displayResults() {
 	
@@ -58,6 +66,7 @@ function displayResults() {
 //LCM Page
 let associations = [];
 
+/*
 function addMethodAttribute() {
     const methodSelect = document.getElementById('methodSelect');
     const attributeSelect = document.getElementById('attributeSelect');
@@ -79,6 +88,7 @@ function addMethodAttribute() {
     associations.push({ method, attribute });
     updateAssociationsTable();
 }
+*/
 
 function updateAssociationsTable() {
     const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
@@ -117,13 +127,13 @@ function updateClassDropdown() {
     });
 }
 
-function sessionSaveInheritanceData(){
+function sessionSaveData(){
     // Save the data to session storage
     sessionStorage.setItem('inheritanceData', JSON.stringify(classes));
 	console.log('saved');
 }
 
-function sessionLoadInheritanceData(){
+function sessionLoadData(){
 	if (sessionStorage.getItem('inheritanceData')){
 		classes = JSON.parse(sessionStorage.getItem('inheritanceData'));
 		console.log(classes);
@@ -181,7 +191,7 @@ function addClass() {
 
     console.log(classes); // For debugging
 	
-	sessionSaveInheritanceData();
+	sessionSaveData();
 }
 
 function removeClass() {
@@ -197,100 +207,33 @@ function removeClass() {
     console.log(classes); // For debugging
 }
 
-
-
-
-
-
-
 //Methods and Attributes Page
+
 // General function to add method and attribute
 // Add a new editable row to the table
 function addEditableRow() {
-    const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
     const newRow = tableBody.insertRow();
     const methodCell = newRow.insertCell(0);
     const attributeCell = newRow.insertCell(1);
 
-    methodCell.innerHTML = '<input type="text" class="input-method" onchange="saveDataToSession()">';
-    attributeCell.innerHTML = '<input type="text" class="input-attribute" onchange="saveDataToSession()">';
+    methodCell.innerHTML = '<input type="text" class="input-method">';
+    attributeCell.innerHTML = '<input type="text" class="input-attribute">';
 }
 
-// Save the data from the table to session storage
-function saveDataToSession() {
-    const inputsMethod = document.querySelectorAll('.input-method');
-    const inputsAttribute = document.querySelectorAll('.input-attribute');
-    let data = [];
-
-    // Iterate over all inputs and save entries where at least one of the fields is filled
-    inputsMethod.forEach((input, index) => {
-        // Check if either method or attribute input is filled out
-        if (input.value.trim() || inputsAttribute[index].value.trim()) {
-            data.push({
-                methodName: input.value.trim(),
-                attributeName: inputsAttribute[index].value.trim()
-            });
-        }
-    });
-
-    // Save the data to session storage
-    sessionStorage.setItem('methodAttributesData', JSON.stringify(data));
-
-    // Alert the user that data has been saved
-    //alert('Data has been saved successfully!');
-}
-
-// Load data from session storage to the table
-function loadDataFromSession() {
-
-    const savedData = JSON.parse(sessionStorage.getItem('methodAttributesData'));
-    if (savedData && savedData.length > 0) {
-        savedData.forEach(entry => {
-            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
-            const newRow = tableBody.insertRow();
-            const methodCell = newRow.insertCell(0);
-            const attributeCell = newRow.insertCell(1);
-            methodCell.innerHTML = `<input type="text" class="input-method" value="${entry.methodName}" onchange="saveDataToSession()">`;
-            attributeCell.innerHTML = `<input type="text" class="input-attribute" value="${entry.attributeName}" onchange="saveDataToSession()">`;
-        });
-    }
+function saveMethodsAndAttributes(){
+	const table = document.getElementById('methodsAndAttributesTable');
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	
+	for(let i=1; i<table.rows.length; i++){
+		console.log('test' + i);
+	}
 }
 
 // Next page
 function goToWeightPerMethodPage() {
     window.location.href = 'WMC.html'; // Redirects to the Weight per Method page
-}
-
-//WMC page
-document.addEventListener('DOMContentLoaded', function() {
-    loadMethodsFromSession();
-});
-
-function loadMethodsFromSession() {
-    const savedData = JSON.parse(sessionStorage.getItem('methodAttributesData'));
-    if (savedData && savedData.length > 0) {
-        savedData.forEach(entry => {
-            addMethodToTable(entry.methodName);
-        });
-    }
-}
-
-function addMethodToTable(methodName) {
-    const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
-    const newRow = tableBody.insertRow();
-    const methodNameCell = newRow.insertCell(0);
-    const complexityCell = newRow.insertCell(1);
-    methodNameCell.textContent = methodName;
-    complexityCell.textContent = '-';  // Placeholder for complexity
-}
-
-function addMethodToTable(methodName, complexity = 0) {
-    const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
-    const newRow = tableBody.insertRow();
-    const methodNameCell = newRow.insertCell(0);
-    const complexityCell = newRow.insertCell(1);
-    methodNameCell.textContent = methodName;
-    complexityCell.innerHTML = `<input type="number" class="complexity-input" value="${complexity}" min="0" disabled>`;
 }
 
 function toggleComplexityInputs() {
@@ -356,21 +299,6 @@ function saveWMCData() {
     sessionStorage.setItem('wmcData', JSON.stringify(wmcSessionData));
 }
 
-//retrieve data
-function loadMethodsFromSession() {
-    const savedData = JSON.parse(sessionStorage.getItem('wmcData'));
-    if (savedData && savedData.methods && savedData.methods.length > 0) {
-        savedData.methods.forEach(entry => {
-            addMethodToTable(entry.methodName, entry.complexity);
-        });
-        document.getElementById('totalWMC').textContent = 'Total WMC: ' + savedData.totalWMC;
-        document.getElementById('enableComplex').checked = savedData.isComplex;
-        toggleComplexityInputs(); // Ensure inputs are correctly enabled/disabled based on saved state
-    }
-}
-
-
-
 
 //Help Page 
 document.querySelectorAll('.help-nav a').forEach(anchor => {
@@ -385,9 +313,42 @@ document.querySelectorAll('.help-nav a').forEach(anchor => {
 
 // Ensure data loads when the page loads
 window.onload = function() {
-	sessionLoadInheritanceData();
-	//loadDataFromSession();
+	sessionLoadData();
 	if ((!window.location.href.includes('Home.html')) && (!window.location.href.includes('help.html'))){
 		updateClassDropdown();
 	}
 }
+
+
+/*
+//retrieve data
+function loadMethodsFromSession() {
+    const savedData = JSON.parse(sessionStorage.getItem('wmcData'));
+    if (savedData && savedData.methods && savedData.methods.length > 0) {
+        savedData.methods.forEach(entry => {
+            addMethodToTable(entry.methodName, entry.complexity);
+        });
+        document.getElementById('totalWMC').textContent = 'Total WMC: ' + savedData.totalWMC;
+        document.getElementById('enableComplex').checked = savedData.isComplex;
+        toggleComplexityInputs(); // Ensure inputs are correctly enabled/disabled based on saved state
+    }
+}
+
+function addMethodToTable(methodName) {
+    const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
+    const newRow = tableBody.insertRow();
+    const methodNameCell = newRow.insertCell(0);
+    const complexityCell = newRow.insertCell(1);
+    methodNameCell.textContent = methodName;
+    complexityCell.textContent = '-';  // Placeholder for complexity
+}
+
+function addMethodToTable(methodName, complexity = 0) {
+    const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
+    const newRow = tableBody.insertRow();
+    const methodNameCell = newRow.insertCell(0);
+    const complexityCell = newRow.insertCell(1);
+    methodNameCell.textContent = methodName;
+    complexityCell.innerHTML = `<input type="number" class="complexity-input" value="${complexity}" min="0" disabled>`;
+}
+*/
