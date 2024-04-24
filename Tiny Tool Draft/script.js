@@ -448,7 +448,7 @@ function CalculateLCM() {
 			LCM++;
 		}
 	}
-	classes[indexOfClasses].LCM = LCM;
+	classes[indexOfClass].LCM = LCM;
 	console.log(LCM)
 }
 
