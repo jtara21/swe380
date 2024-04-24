@@ -314,22 +314,19 @@ function displayLCMTable(){
 	while(table.rows.length>0){
 		table.deleteRow(0);
 	}
+
+	var header = table.createTHead();
+        var headerRow = header.insertRow();
+	var emptyCell = headerRow.insertCell();
+        attributes.forEach(function(attribute) {
+        	var cell = headerRow.insertCell();
+                cell.textContent = attribute;
+        });
 	
 	methods.forEach(function(method, methodIndex) {
         	var row = table.insertRow();
         	var cell = row.insertCell();
         	cell.textContent = method;
-
-        	// Label the columns with the attributes array
-        	if (methodIndex === 0) {
-            		var header = table.createTHead();
-            		var headerRow = header.insertRow();
-			var emptyCell = headerRow.insertCell();
-            		attributes.forEach(function(attribute) {
-                		var cell = headerRow.insertCell();
-                		cell.textContent = attribute;
-            		});
-        	}
 
         	// Add dropdown boxes to each cell (except for the header row and header column)
         	for (var i = 0; i < attributes.length; i++) {
