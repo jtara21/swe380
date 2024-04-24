@@ -345,6 +345,7 @@ function displayLCMTable(){
 }
 
 function SaveLCMTable() {
+	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let attributes = classes[indexOfClass].attributes;
 	const table = document.getElementById('LCMTable');
