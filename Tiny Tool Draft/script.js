@@ -427,10 +427,29 @@ function CalculateLCM() {
 	console.log(cohesion);
 
 	let Head = [];
-	for (let i = 0 ; i <mLen ; i++) {
-		Head.push(1)
-		
+	for (let m1 = 0 ; m1 <mLen ; m1++) {
+		Head.push(1);
+		for (let m2 = 0 ; m2 < m1 ; m2++){
+			if (cohesion[m1][m2] == 1){
+				Head[m1] = 0;
+				if (Head[m2] == 1){
+					for (let m3 = 0 ; m3 < m2 ; m3++){
+						if (cohesion[m1][m3] == 1){
+							Head[m2] = 0;
+						}
+					}
+				}
+			}
+		}
 	}
+	let LCM = 0;
+	for (let i = 0 ; i < Head.length ; i++){
+		if (Head[i] == 1){
+			LCM++;
+		}
+	}
+	classes[indexOfClasses].LCM = LCM;
+	console.log(LCM)
 }
 
 // CBO Page
