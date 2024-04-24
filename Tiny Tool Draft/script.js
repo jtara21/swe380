@@ -172,7 +172,7 @@ function saveMethodsAndAttributes(){
 	for(let i=methodsLength+1; i < table.rows.length; i++){
 		
 		let row = table.rows[i];
-		let methodInput = [row.cells[0].getElementsByClassName('input-method')[0],0];
+		let methodInput = row.cells[0].getElementsByClassName('input-method')[0];
 		let attributeInput = row.cells[1].getElementsByClassName('input-attribute')[0];
 		
 		classes[indexOfClass].methods.push(methodInput.value);
@@ -197,7 +197,7 @@ function displayClassMethodsAndAttributes(){
 			const newRow = tableBody.insertRow();
 			const methodCell = newRow.insertCell(0);
 			const attributeCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i,0];
+			let method = classes[indexOfClass].methods[i];
 			let attribute = classes[indexOfClass].attributes[i];
 			
 			console.log(method + ' ' + attribute);
@@ -225,14 +225,14 @@ function displayClassMethodsAndAttributes(){
 		for(let i=0; i < arrayLength; i++){
 			const newRow = tableBody.insertRow();
 			const methodCell = newRow.insertCell(0);
-			const attributeCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i];
-			let attribute = classes[indexOfClass].attributes[i];
+			const complexityCell = newRow.insertCell(1);
+			let method = classes[indexOfClass].methods[i,0];
+			let complexity = classes[indexOfClass].methods[i,1];
 			
-			console.log(method + ' ' + attribute);
+			console.log(method + ' ' + complexity);
 
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
-			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+			complexityCell.innerHTML = `<div class="input-attribute">${complexity}</div>`;
 		}
 	}
 }*/
@@ -302,6 +302,32 @@ function saveWMCData() {
 
 //LCM Page
 let associations = [];
+
+function displayLCMTest(){
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let arrayLength = classes[indexOfClass].methods.length;
+	const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
+	
+	while(tableBody.columns.length){
+		tableBody.deletecolumn(0);
+	}
+		
+	if(arrayLength){
+		for(let i=0; i < arrayLength; i++){
+			const newRow = tableBody.insertColumn);
+			const methodCell = newRow.insertCell(0);
+			const attributeCell = newRow.insertCell(1);
+			let method = classes[indexOfClass].methods[i];
+			let attribute = classes[indexOfClass].attributes[i];
+			
+			console.log(method + ' ' + attribute);
+
+			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
+			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+		}
+	}
+}
 
 /*
 function addMethodAttribute() {
