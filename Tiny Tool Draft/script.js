@@ -301,7 +301,7 @@ function addMethodAttribute() {
 }
 */
 
-/*function displayClassMethodsAndCohesion(){
+function displayClassMethodsAndCohesion(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let mLength = classes[indexOfClass].methods.length;
@@ -333,7 +333,7 @@ function addMethodAttribute() {
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
 		}
 	}
-}*/
+}
 
 function updateAssociationsTable() {
     const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
