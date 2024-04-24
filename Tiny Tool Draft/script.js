@@ -315,52 +315,62 @@ function displayLCMTable(){
 		table.deleteRow(0);
 	}
 
-	var header = table.createTHead();
-        var headerRow = header.insertRow();
-	var emptyCell = headerRow.insertCell();
+	let header = table.createTHead();
+        let headerRow = header.insertRow();
+	let emptyCell = headerRow.insertCell();
         attributes.forEach(function(attribute) {
-        	var colHead = headerRow.insertCell();
+        	let colHead = headerRow.insertCell();
                 colHead.textContent = attribute;
         });
 	
 	methods.forEach(function(method, methodIndex) {
-		var body = table.createTBody();
-        	var row = body.insertRow();
-        	var rowHead = row.insertCell();
+		let body = table.createTBody();
+        	let row = body.insertRow();
+        	let rowHead = row.insertCell();
         	rowHead.textContent = method;
 
         	// Add dropdown boxes to each cell (except for the header row and header column)
-        	for (var i = 0; i < attributes.length; i++) {
-            		var newCell = row.insertCell();
-                	var select = document.createElement("select");
-                	var optionNo = document.createElement("option");
+        	for (let i = 0; i < attributes.length; i++) {
+            		let newCell = row.insertCell();
+                	let select = document.createElement("select");
+                	let optionNo = document.createElement("option");
                 	optionNo.text = "No";
                 	select.add(optionNo);
                 	newCell.appendChild(select);
-			var optionYes = document.createElement("option");
+			let optionYes = document.createElement("option");
                 	optionYes.text = "Yes";
                 	select.add(optionYes);
         	}
     	});
 }
 
-function updateLCMTable() {
-    const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Clear existing entries
-
-    associations.forEach(assoc => {
-        const row = tableBody.insertRow();
-        const methodCell = row.insertCell(0);
-        const attributeCell = row.insertCell(1);
-        methodCell.textContent = assoc.method;
-        attributeCell.textContent = assoc.attribute;
-    });
-}
-
-function calculateLCM() {
-    // Implement LCM calculation logic here based on the associations
-    const lcmScore = calculateLCMScore(associations); // You will need to define this function
-    document.getElementById('lcmScore').querySelector('span').textContent = lcmScore;
+function SaveLCMTable() {
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let attributes = classes[indexOfClass].attributes;
+	const table = document.getElementById('LCMTable');
+	
+	while(associations.length < indexOfClass) {
+		associations.push(0);
+	}
+	
+	let tempAssoc = [];
+	
+	for (let i = 1 ; i < table.rows.length ; i++) {
+		
+		let row = table.rows[i];
+		let tempAssoc2 = [];
+		
+		for (let j = 1 ; j < attributes.length ; j++) {
+			let cell = row.cells[j].getElementByTagName('td');
+			let select = cell.querySelector("select");
+                	let selectedIndex = select.selectedIndex;
+                	let selectedOption = select.options[selectedIndex];
+                	let value = selectedOption.text === "Yes" ? 1 : 0;
+			tempAssoc2.push(value);
+		}
+		tempAssoc.push(tempAssoc2);
+	}
+	associations[indexOfClass] = tempAssoc;
 }
 
 
