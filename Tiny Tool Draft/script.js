@@ -304,25 +304,33 @@ function addMethodAttribute() {
 function displayClassMethodsAndCohesion(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	let arrayLength = classes[indexOfClass].methods.length;
+	let mLength = classes[indexOfClass].methods.length;
+	let aLength = classes[indexOfClass].attributes.length;
 	const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
+	const tableHead = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
 	
 	while(tableBody.rows.length){
 		tableBody.deleteRow(0);
 	}
-		
-	if(arrayLength){
-		for(let i=0; i < arrayLength; i++){
-			const newRow = tableBody.insertRow();
-			const methodCell = newRow.insertCell(0);
-			const attributeCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i];
+	if(aLength){
+		for(let i=0; i < aLength; i++){
+			const newColumn = tableBody.insertColumn();
+			const attributeCell = newColumn.insertCell(0);
 			let attribute = classes[indexOfClass].attributes[i];
 			
-			console.log(method + ' ' + attribute);
+			console.log(attribute);
+
+			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+		}
+	if(mLength){
+		for(let i=0; i < mLength; i++){
+			const newRow = tableBody.insertRow();
+			const methodCell = newRow.insertCell(0);
+			let method = classes[indexOfClass].methods[i];
+			
+			console.log(method);
 
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
-			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
 		}
 	}
 }
