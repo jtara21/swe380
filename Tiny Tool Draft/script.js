@@ -309,7 +309,7 @@ function displayLCMTest(){
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let mLength = classes[indexOfClass].methods.length;
 	let aLength = classes[indexOfClass].attributes.length;
-	const table = document.getElementById('methodsAndAttributesTable');
+	const table = document.getElementById('LCMTable');
 	
 	while(table.rows.length>0){
 		table.deleteRow(0);
