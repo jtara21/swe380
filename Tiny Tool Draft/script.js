@@ -315,7 +315,7 @@ function displayLCMTest(){
 		
 	if(arrayLength){
 		for(let i=0; i < arrayLength; i++){
-			const newRow = tableBody.insertColumn);
+			const newRow = tableBody.insertColumn();
 			const methodCell = newRow.insertCell(0);
 			const attributeCell = newRow.insertCell(1);
 			let method = classes[indexOfClass].methods[i];
