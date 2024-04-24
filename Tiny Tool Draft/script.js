@@ -341,6 +341,7 @@ function displayLCMTable(){
                 		select.add(optionNo);
                 		newCell.appendChild(select);
             		}
+		rowHead.appendChild(select)
         	}
     	});
 }
