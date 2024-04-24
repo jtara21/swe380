@@ -381,7 +381,8 @@ function SaveLCMTable() {
                         let selectedOption = select.options[selectedIndex];
                         let value = selectedOption.text === "Yes" ? 1 : 0;
                         tempAssoc2.push(value);
-                })
+		    }
+                });
 		tempAssoc.push(tempAssoc2);
 	}
 	associations[indexOfClass] = tempAssoc;
