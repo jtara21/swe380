@@ -324,7 +324,8 @@ function displayLCMTable(){
         });
 	
 	methods.forEach(function(method, methodIndex) {
-        	var row = table.insertRow();
+		var body = table.createTBody();
+        	var row = body.insertRow();
         	var rowHead = row.insertCell();
         	rowHead.textContent = method;
 
@@ -343,7 +344,7 @@ function displayLCMTable(){
     	});
 }
 
-function updateAssociationsTable() {
+function updateLCMTable() {
     const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = ''; // Clear existing entries
 
