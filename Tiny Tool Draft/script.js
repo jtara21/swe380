@@ -386,6 +386,7 @@ function SaveLCMTable() {
 		tempAssoc.push(tempAssoc2);
 	}
 	associations[indexOfClass] = tempAssoc;
+	console.log(associations)
 }
 
 
