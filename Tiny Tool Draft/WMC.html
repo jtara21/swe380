@@ -4,6 +4,7 @@
 <title>Weighted Methods per Class</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width", initial-scale="1.0">
+<!--<meta name="description" content="Home page. Our Agency is here to show you how amazing is Senegal as a country. It really is a great place for tourism. ">-->
 <link rel="stylesheet" type="text/css" href="main_style.css"/>
 <script src="script.js"></script>
 <body>
@@ -58,7 +59,7 @@
                         
                         <label for="selectedClass">Select Class:</label>
                         <br>
-                        <select id="classDropdown" name="selectedClass">
+                        <select id="classDropdown" name="selectedClass" onchange="displayClassMethodsAndComplexities()">
                         <!-- Class options added by JavaScript -->
                         </select>
                         <br><br>
@@ -74,10 +75,9 @@
                             <!-- Methods and complexities will be filled here -->
                             </tbody>
                         </table>
-                        <div class="button-container">
-                            <button onclick="calculateWMC()" id="calculateButton">Calculate WMC</button>
+                        <div>
+                            <button type="button" onclick="calculateWMC()">Calculate WMC</button>
                         </div>
-                        <div id="totalWMC">Total WMC: 0</div>
                     </form>
                </div>
                 <img src="Images/wmcImage.png">
