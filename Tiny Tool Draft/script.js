@@ -176,8 +176,12 @@ function saveMethodsAndAttributes(){
 		let methodInput = row.cells[0].getElementsByClassName('input-method')[0];
 		let attributeInput = row.cells[1].getElementsByClassName('input-attribute')[0];
 		
-		classes[indexOfClass].methods.push(methodInput.value);
-		classes[indexOfClass].attributes.push(attributeInput.value);
+		if(methodInput.value){			
+			classes[indexOfClass].methods.push(methodInput.value);
+		}
+		if(attributeInput.value){
+			classes[indexOfClass].attributes.push(attributeInput.value);
+		}
 	}
 	
 	sessionSaveData();
