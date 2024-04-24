@@ -116,6 +116,7 @@ function addClass() {
 	RFC: 0,
 	CBO: 0,
 	methods: [],
+	complexities: [],
 	attributes: [],
     };
 	
@@ -215,7 +216,7 @@ function displayClassMethodsAndComplexities(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	let arrayLength = classes[indexOfClass].methods.length;
-	const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
+	const tableBody = document.getElementById('WMCTable').getElementsByTagName('tbody')[0];
 	
 	while(tableBody.rows.length){
 		tableBody.deleteRow(0);
