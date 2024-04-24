@@ -307,32 +307,27 @@ let associations = [];
 function displayLCMTest(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	let mLength = classes[indexOfClass].methods.length;
-	let aLength = classes[indexOfClass].attributes.length;
+	let methods = classes[indexOfClass].methods;
+	let attributes = classes[indexOfClass].attributes;
 	const table = document.getElementById('LCMTable');
 	
 	while(table.rows.length>0){
 		table.deleteRow(0);
 	}
-	var header = table.createTHead();
- 	var headRow = header.insertRow(0);
 	
-	if(aLength){
-		for(let i=0; i < aLength; i++){
-			const ColHead = headRow.insertCell();
-			let attribute = classes[indexOfClass].attributes[i];
-			ColHead.textcontent = attribute;
-		}
-	}
-	
-	if(mLength){
-		for(let i=0; i < mLength; i++){
-			const newRow = table.insertRow();
-			const RowHead = newRow.insertCell();
-			let method = classes[indexOfClass].methods[i];
-			RowHead.textcontent = method;
-		}
-	}
+	methods.forEach(function(method) {
+        	var row = table.insertRow();
+        	var cell = row.insertCell();
+       		cell.textContent = method;
+	});
+
+    	// Label the columns with the attributes array
+   	var header = table.createTHead();
+    	var row = header.insertRow(0);
+    	attributes.forEach(function(attribute) {
+        	var cell = row.insertCell();
+        	cell.textContent = attribute;
+    	});
 }
 
 /*
