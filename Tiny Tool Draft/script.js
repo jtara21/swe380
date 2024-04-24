@@ -345,68 +345,8 @@ function displayLCMTable(){
     	});
 }
 
-/*
-function addMethodAttribute() {
-    const methodSelect = document.getElementById('methodSelect');
-    const attributeSelect = document.getElementById('attributeSelect');
-    const method = methodSelect.value;
-    const attribute = attributeSelect.value;
-
-    if (!method || !attribute) {
-        alert("Please select both a method and an attribute.");
-        return;
-    }
-
-    // Prevent duplicate entries
-    const associationExists = associations.some(assoc => assoc.method === method && assoc.attribute === attribute);
-    if (associationExists) {
-        alert("This association has already been added.");
-        return;
-    }
-
-    associations.push({ method, attribute });
-    updateAssociationsTable();
-}
-*/
-
-/*function displayClassMethodsAndCohesion(){
-	const className = document.getElementById('classDropdown').value;
-	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	let mLength = classes[indexOfClass].methods.length;
-	let aLength = classes[indexOfClass].attributes.length;
-	const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
-	const tableHead = document.getElementById('LCMTable').getElementsByTagName('thead')[0];
-	
-	while(tableHead.columns.length){
-		tableBody.deleteColumn(0);
-	while(tableBody.rows.length){
-		tableBody.deleteRow(0);
-	}
-	if(aLength){
-		for(let i=0; i < aLength; i++){
-			const newColumn = tableHead.insertColumn();
-			const attributeCell = newColumn.insertCell(0);
-			let attribute = classes[indexOfClass].attributes[i];
-			
-			//console.log(attribute);
-
-			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
-		}
-	if(mLength){
-		for(let i=0; i < mLength; i++){
-			const newRow = tableBody.insertRow();
-			const methodCell = newRow.insertCell(0);
-			let method = classes[indexOfClass].methods[i];
-			
-			//console.log(method);
-
-			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
-		}
-	}
-}*/
-
 function updateAssociationsTable() {
-    const tableBody = document.getElementById('associationsTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('LCMTable').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = ''; // Clear existing entries
 
     associations.forEach(assoc => {
