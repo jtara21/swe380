@@ -310,7 +310,7 @@ function displayLCMTest(){
 	const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
 	
 	while(tableBody.columns.length){
-		tableBody.deletecolumn(0);
+		tableBody.deleteColumn(0);
 	}
 		
 	if(arrayLength){
