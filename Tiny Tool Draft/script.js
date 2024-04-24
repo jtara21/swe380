@@ -285,6 +285,7 @@ function calculateWMC() {
 
 	classes[indexOfClass].WMC = totalWMC;
 	sessionSaveData();
+	alert("Weighted Methods per Class Calculated! Result: " + totalWMC);
 }
 
 
