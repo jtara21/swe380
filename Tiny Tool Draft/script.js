@@ -333,13 +333,13 @@ function displayLCMTable(){
         	for (var i = 0; i < attributes.length; i++) {
             		var newCell = row.insertCell();
                 	var select = document.createElement("select");
-                	var optionYes = document.createElement("option");
-                	optionYes.text = "Yes";
-                	select.add(optionYes);
                 	var optionNo = document.createElement("option");
                 	optionNo.text = "No";
                 	select.add(optionNo);
                 	newCell.appendChild(select);
+			var optionYes = document.createElement("option");
+                	optionYes.text = "Yes";
+                	select.add(optionYes);
         	}
     	});
 }
