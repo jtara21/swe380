@@ -225,7 +225,7 @@ function displayClassMethodsAndComplexities(){
 			const newRow = tableBody.insertRow();
 			const methodCell = newRow.insertCell(0);
 			const complexityCell = newRow.insertCell(1);
-			let method = classes[indexOfClass].methods[i,0];
+			let method = classes[indexOfClass].methods[i];
 			let complexity = classes[indexOfClass].methods[i,1];
 
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
