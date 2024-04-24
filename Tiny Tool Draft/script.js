@@ -185,6 +185,7 @@ function saveMethodsAndAttributes(){
 	}
 	
 	sessionSaveData();
+	alert("Methods and Attributes saved!");
 }
 
 function displayClassMethodsAndAttributes(){
