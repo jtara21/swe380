@@ -433,6 +433,70 @@ function CalculateLCM() {
 	}
 }
 
+// CBO Page
+function displayLCMTable(){
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let methods = classes[indexOfClass].methods;
+	let attributes = classes[indexOfClass].attributes;
+	const table = document.getElementById('CBOTable');
+	
+	while(table.rows.length>0){
+		table.deleteRow(0);
+	}
+
+	let header = table.createTHead();
+        let headerRow = header.insertRow();
+	let emptyCell = headerRow.insertCell();
+        classes.forEach(function(cls) {
+                if (cls.name !== className) { // Exclude the selected class
+                    let colHead = headerRow.insertCell();
+                    colHead.textContent = cls.name; // Using class name for header, assuming you meant cls.name not attribute
+                }
+            });
+	
+	methods.forEach(function(method, methodIndex) {
+		let body = table.createTBody();
+        	let row = body.insertRow();
+        	let rowHead = row.insertCell();
+        	rowHead.textContent = method;
+
+        	// Add dropdown boxes to each cell (except for the header row and header column)
+        	for (let i = 0; i < classes.length; i++) {
+            		let newCell = row.insertCell();
+                	let select = document.createElement("select");
+                	let optionNo = document.createElement("option");
+                	optionNo.text = "0";
+                	newCell.appendChild(select);
+			let optionYes = document.createElement("option");
+                	optionYes.text = "1";
+                	select.add(optionYes);
+
+        
+        	}
+    	});
+
+        attributes.forEach(function(attribute, attributeIndex) {
+            let body = table.createTBody();
+                let row = body.insertRow();
+                let rowHead = row.insertCell();
+                rowHead.textContent = method;
+    
+                // Add dropdown boxes to each cell (except for the header row and header column)
+                for (let i = 0; i < classes.length; i++) {
+                        let newCell = row.insertCell();
+                        let select = document.createElement("select");
+                        let optionNo = document.createElement("option");
+                        optionNo.text = "0";
+                        select.add(optionNo);
+                        newCell.appendChild(select);
+                let optionYes = document.createElement("option");
+                        optionYes.text = "1";
+                        select.add(optionYes);
+                }
+            });
+        
+}
 
 //Help Page 
 document.querySelectorAll('.help-nav a').forEach(anchor => {
