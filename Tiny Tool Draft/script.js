@@ -190,7 +190,7 @@ function saveMethodsAndAttributes(){
 function displayClassMethodsAndAttributes(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	let arrayLength = classes[indexOfClass].methods.length;
+	let arrayLength = Math.max(classes[indexOfClass].methods.length, classes[indexOfClass].attributes.length);
 	const tableBody = document.getElementById('methodsAndAttributesTable').getElementsByTagName('tbody')[0];
 	
 	while(tableBody.rows.length){
@@ -205,8 +205,12 @@ function displayClassMethodsAndAttributes(){
 			let method = classes[indexOfClass].methods[i];
 			let attribute = classes[indexOfClass].attributes[i];
 
+			if (method){
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
+			}
+			if(attribute){
 			attributeCell.innerHTML = `<div class="input-attribute">${attribute}</div>`;
+			}
 		}
 	}
 }
