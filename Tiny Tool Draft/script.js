@@ -512,7 +512,7 @@ function SaveRFCTable() {
                 });*/
 
 
-		for (let j = 1 ; j < classes[indexOfClass].methods.length ; j++){
+		for (let j = 1 ; j < classes[indexOfClass].methods.length+1 ; j++){
 			let methodInput = row.cells[j].getElementsByTagName('input')[0];
 			if(methodInput.value){			
 				tempAssoc2.push(methodInput.value);
