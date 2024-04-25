@@ -248,7 +248,7 @@ function displayClassMethodsAndComplexities(){
 			let complexity = classes[indexOfClass].methods[i,1];
 
 			methodCell.innerHTML = `<div class="input-method">${method}</div>`;
-			complexityCell.innerHTML = '<input type="number" min ="1" class="input-complexity">';
+			complexityCell.innerHTML = '<input type="number" class="input-complexity">';
 		}
 	}
 }
@@ -265,22 +265,29 @@ function calculateWMC() {
 	const table = document.getElementById('WMCTable');
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
-    let complexityInputs = [];
-    let totalWMC = 0;
+    	let complexityInputs = [];
+    	let totalWMC = 0;
 
 	for(let i=1; i < table.rows.length; i++){
 	
 		let row = table.rows[i];
-		let complexity = row.cells[1].getElementsByClassName('input-complexity')[0];
+		let inputBox = row.cells[1].getElementsByClassName('input-complexity')[0];
+		let complexity = parseInt(inputBox.value);
+		console.log(complexity);
 		
-		complexityInputs.push(complexity.value);
+		if(complexity < 1){
+			alert("Please enter a value greater than 0!");
+			return;
+		}
+		complexityInputs.push(complexity);
 	}
 	
 	classes[indexOfClass].complexities = complexityInputs;
 	
 	if (!document.getElementById('enableComplex').checked) {
-        totalWMC = complexityInputs.length; // Simple calculation: count methods
+       		totalWMC = complexityInputs.length; // Simple calculation: count methods
 	}
+		
 	else {
 		for(let i=0; i<complexityInputs.length; i++){
 			totalWMC += +complexityInputs[i];
