@@ -544,10 +544,10 @@ function CalculateCBO() {
 		coupling.push(0);
 		for (let j = 0 ; j< table.rows.length ; j++){
 			if (associations2[indexOfClass][j][i] == 1){
-				coupling i = 1;
+				coupling[i] = 1;
 			}
 		}
-		CBO = CBO + coupling[i];
+		CBO += coupling[i];
 	}
 	
 	console.log(coupling);
