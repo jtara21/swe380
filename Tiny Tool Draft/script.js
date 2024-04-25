@@ -484,8 +484,9 @@ function displayCBOTable(){
                 }
             });
 	
+	let body = table.createTBody();
 	methods.forEach(function(method, methodIndex) {
-		let body = table.createTBody();
+		
         	let row = body.insertRow();
         	let rowHead = row.insertCell();
         	rowHead.textContent = method;
@@ -495,32 +496,31 @@ function displayCBOTable(){
             		let newCell = row.insertCell();
                 	let select = document.createElement("select");
                 	let optionNo = document.createElement("option");
-                	optionNo.text = "0";
+                	optionNo.text = "No";
                 	newCell.appendChild(select);
 			let optionYes = document.createElement("option");
-                	optionYes.text = "1";
+                	optionYes.text = "Yes";
                 	select.add(optionYes);
 
         
         	}
     	});
-
+	
         attributes.forEach(function(attribute, attributeIndex) {
-            let body = table.createTBody();
                 let row = body.insertRow();
                 let rowHead = row.insertCell();
-                rowHead.textContent = method;
+                rowHead.textContent = attribute;
     
                 // Add dropdown boxes to each cell (except for the header row and header column)
                 for (let i = 0; i < classes.length; i++) {
                         let newCell = row.insertCell();
                         let select = document.createElement("select");
                         let optionNo = document.createElement("option");
-                        optionNo.text = "0";
+                        optionNo.text = "No";
                         select.add(optionNo);
                         newCell.appendChild(select);
                 let optionYes = document.createElement("option");
-                        optionYes.text = "1";
+                        optionYes.text = "Yes";
                         select.add(optionYes);
                 }
             });
