@@ -484,13 +484,12 @@ function addRow() {
 
 function RFCButton(){
 	SaveRFCTable();
-	CalculateRFC();
+	//CalculateRFC();
 }
 
 function SaveRFCTable() {
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	let attributes = classes[indexOfClass].attributes;
 	const table = document.getElementById('methodsInteractionTable');
 	
 	while(associations3.length < indexOfClass) {
@@ -505,10 +504,7 @@ function SaveRFCTable() {
 		let cells = row.querySelectorAll("td");
                 cells.forEach(function(cell, cellIndex) {
                     if (cellIndex > 0) { // Skip header column
-                        let select = cell.querySelector("select");
-                        let selectedIndex = select.selectedIndex;
-                        let selectedOption = select.options[selectedIndex];
-                        let value = selectedOption.text === "Yes" ? 1 : 0;
+                        let value = cell.textContent;
                         tempAssoc2.push(value);
 		    }
                 });
@@ -518,7 +514,7 @@ function SaveRFCTable() {
 	console.log(associations3)
 }
 
-function CalculateRFC() {
+/*function CalculateRFC() {
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	const table = document.getElementById('methodsInteractionTable');
@@ -542,7 +538,7 @@ function CalculateRFC() {
 	console.log('RFC=' + RFC);
 	alert("RFC = " + RFC);
 	sessionSaveData();
-}
+}*/
 
 // CBO Page
 
