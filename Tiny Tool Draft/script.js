@@ -1,5 +1,6 @@
 let classes = [];
 let resultsDisplayed = false;
+let associations = [];
 
 //Home Page
 
@@ -150,6 +151,8 @@ function removeClass() {
     console.log(classes); // For debugging
 }
 
+
+
 //Methods and Attributes Page
 
 // General function to add method and attribute
@@ -223,6 +226,7 @@ function displayClassMethodsAndAttributes(){
 }
 
 
+
 //WMC Page
 
 function displayClassMethodsAndComplexities(){
@@ -289,48 +293,8 @@ function calculateWMC() {
 }
 
 
+
 //LCM Page
-/*
-function saveLCMData() {
-    function SaveLCMTable() {
-        const className = document.getElementById('classDropdown').value;
-        let indexOfClass = classes.findIndex(cls => cls.name === className);
-        let attributes = classes[indexOfClass].attributes;
-        const table = document.getElementById('LCMTable');
-
-        // see if associations array has enough space for the class
-        while (associations.length <= indexOfClass) {
-            associations.push([]);
-        }
-
-        let tempAssoc = [];
-
-        // iterates over each table row. It skips the header row.
-        for (let i = 1; i < table.rows.length; i++) {
-            let row = table.rows[i];
-            let tempAssoc2 = [];
-
-            // iterates thru each cell in row (besides header cell)
-            for (let j = 1; j < row.cells.length; j++) {
-                let cell = row.cells[j];
-                let select = cell.querySelector("select");
-                let selectedIndex = select.selectedIndex;
-                let selectedOption = select.options[selectedIndex];
-                let value = selectedOption.text === "Yes" ? 1 : 0;
-                tempAssoc2.push(value);
-            }
-            tempAssoc.push(tempAssoc2);
-        }
-
-        // associations array is updated
-        associations[indexOfClass] = tempAssoc;
-    }
-
-    // calls when necessary
-    SaveLCMTable();
-}
-*/
-let associations = [];
 
 function displayLCMTable(){
 	const className = document.getElementById('classDropdown').value;
@@ -461,6 +425,7 @@ function CalculateLCM() {
 	alert("LCM = " + LCM);
 	sessionSaveData();
 }
+
 
 
 // CBO Page
