@@ -464,6 +464,7 @@ function displayCBOTable(){
                 	let select = document.createElement("select");
                 	let optionNo = document.createElement("option");
                 	optionNo.text = "No";
+			select.add(optionNo);
                 	newCell.appendChild(select);
 			let optionYes = document.createElement("option");
                 	optionYes.text = "Yes";
