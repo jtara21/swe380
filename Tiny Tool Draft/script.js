@@ -58,6 +58,14 @@ function displayResults() {
 	resultsDisplayed = true;
 }
 
+function resetProgram(){
+	classes = [];
+	resultsDisplayed = false;
+	associations = [];
+	associations2 = [];
+	sessionStorage.clear();
+	location.reload();
+}
 
 //DIT and NOC page
 
