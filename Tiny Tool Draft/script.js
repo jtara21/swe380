@@ -482,7 +482,7 @@ function addRow() {
     }
 }
 
-function RFCButton(){
+/*function RFCButton(){
 	SaveRFCTable();
 	//CalculateRFC();
 }
@@ -515,7 +515,7 @@ function SaveRFCTable() {
 	
 	associations3[indexOfClass] = tempAssoc;
 	console.log(associations3)
-}
+}*/
 
 
 //RFC saving function
