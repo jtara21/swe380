@@ -496,7 +496,7 @@ function SaveRFCTable() {
 		associations3.push(0);
 	}
 
-	/*let tempAssoc = [];
+	let tempAssoc = [];
 	
 	for (let i = 1 ; i < table.rows.length ; i++) {
 		
@@ -511,18 +511,10 @@ function SaveRFCTable() {
 		    }
                 });
 		tempAssoc.push(tempAssoc2);
-	}*/
-
-	var textInputs = table.querySelectorAll("input[type='text']");
-
-	// Convert NodeList to an array
-	var textInputsArray = Array.from(textInputs);
-
-	// Now you have an array of text inputs
-	console.log(textInputsArray);
+	}
 	
-	//associations3[indexOfClass] = tempAssoc;
-	//console.log(associations3)
+	associations3[indexOfClass] = tempAssoc;
+	console.log(associations3)
 }
 
 /*function CalculateRFC() {
