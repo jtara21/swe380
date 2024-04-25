@@ -448,6 +448,10 @@ function CalculateLCM() {
 function updateMethodTable() {
 	const className = document.getElementById('classDropdown').value;
 	const selectedClass = classes.find(cls => cls.name === className);
+	if (!selectedClasss){
+		console.error('Selected class not found');
+		return;
+	}
 	
     	// Update table headers with methods of the selected class
    	const headersRow = document.getElementByID('methodHeaders');
