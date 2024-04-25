@@ -544,7 +544,7 @@ function CalculateCBO() {
 	
 	for (let i = 0 ; i < classes.length ; i++){
 		coupling.push(0);
-		for (let j = 0 ; j < table.rows.length ; j++){
+		for (let j = 0 ; j < table.rows.length-1 ; j++){
 			if (associations2[indexOfClass][j][i] == 1){
 				coupling[i] = 1;
 			}
