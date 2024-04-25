@@ -477,7 +477,6 @@ function addRow() {
         const cell = newRow.insertCell(i + 1);
         const interactionInput = document.createElement('input');
         interactionInput.type = 'text';
-	interactionInput.class = 'method-input';
         interactionInput.placeholder = 'Interaction details';
         cell.appendChild(interactionInput);
     }
@@ -514,7 +513,7 @@ function SaveRFCTable() {
 
 
 		for (let j = 1 ; j < classes[indexOfClass].methods.length ; j++){
-			let methodInput = row.cells[j].getElementsByClassName('method-input')[0];
+			let methodInput = row.cells[j].getElementsByTagName('input')[0];
 			if(methodInput.value){			
 				tempAssoc2.push(methodInput.value);
 			}
