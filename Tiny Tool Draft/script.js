@@ -447,7 +447,7 @@ function displayRFCTable() {
 	}
 	
     	// Update table headers with methods of the selected class
-   	 const headersRow = document.getElementById('methodHeaders');
+   	const headersRow = table.getElementByID('methodHeaders');
     	headersRow.innerHTML = '<th>Method Name</th>'; // Clear previous headers and add the 'Method Name' column
     	selectedClass.methods.forEach(method => {
         const th = document.createElement('th');
@@ -457,7 +457,7 @@ function displayRFCTable() {
 }
 
 function addRow() {
-    const tableBody = document.getElementById('methodsInteractionTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('RFCTable').getElementsByTagName('tbody')[0];
     const newRow = tableBody.insertRow();
     const rowIndex = tableBody.rows.length;// to get the index of the row
     const methodNameCell = newRow.insertCell(0);
