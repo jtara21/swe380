@@ -533,7 +533,7 @@ function SaveCBOTable() {
 	console.log(associations2)
 }
 
-function CalculateCBO() {
+/*function CalculateCBO() {
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	const table = document.getElementById('CBOTable');
@@ -556,7 +556,7 @@ function CalculateCBO() {
 	console.log('CBO=' + CBO);
 	alert("CBO = " + CBO);
 	sessionSaveData();
-}
+}*/
 
 
 
