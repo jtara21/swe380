@@ -463,10 +463,6 @@ function addRow() {
     const methodNameCell = newRow.insertCell(0);
     const input = document.createElement('input');
     methodNameCell.textContent = `Method ${rowIndex}`;  // Set default method name based on the row count
-   // input.type = 'text';
-    //input.placeholder = 'Enter method name';
-    //methodNameCell.appendChild(input);
-
     const numMethods = document.getElementById('methodHeaders').cells.length - 1;
     for (let i = 0; i < numMethods; i++) {
         const cell = newRow.insertCell(i + 1);
