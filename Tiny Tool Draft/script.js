@@ -78,7 +78,7 @@ function displayResults() {
 		let metricCBO = parseInt(classes[j].CBO);
         let td = document.createElement('td');
         td.innerHTML = classes[j].CBO;
-		if(metricCBO > 14){
+		if(metricCBO > 14 || metricCBO == -1){
 			td.bgColor = '#F7B6B6';
 		}
         table.rows[6].appendChild(td);
