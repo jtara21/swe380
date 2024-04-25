@@ -447,7 +447,7 @@ function displayRFCTable() {
 	}
 	
     	// Update table headers with methods of the selected class
-   	const headersRow = table.getElementByID('methodHeaders');
+   	const headersRow = document.getElementByID('methodHeaders');
     	headersRow.innerHTML = '<th>Method Name</th>'; // Clear previous headers and add the 'Method Name' column
     	selectedClass.methods.forEach(method => {
         const th = document.createElement('th');
