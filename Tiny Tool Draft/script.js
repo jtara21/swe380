@@ -547,7 +547,7 @@ function CalculateCBO() {
 				coupling i = 1;
 			}
 		}
-		CBO += coupling[i];
+		CBO = CBO + coupling[i];
 	}
 	
 	console.log(coupling);
