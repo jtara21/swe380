@@ -2,6 +2,7 @@ let classes = [];
 let resultsDisplayed = false;
 let associations = [];
 let associations2 = [];
+let associations3 = [];
 
 //Home Page
 
@@ -481,6 +482,68 @@ function addRow() {
     }
 }
 
+function RFCButton(){
+	SaveRFCTable();
+	CalculateRFC();
+}
+
+function SaveRFCTable() {
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let attributes = classes[indexOfClass].attributes;
+	const table = document.getElementById('methodsInteractionTable');
+	
+	while(associations3.length < indexOfClass) {
+		associations3.push(0);
+	}
+	
+	for (let i = 1 ; i < table.rows.length ; i++) {
+		
+		let row = table.rows[i];
+		let tempAssoc2 = [];
+		
+		let cells = row.querySelectorAll("td");
+                cells.forEach(function(cell, cellIndex) {
+                    if (cellIndex > 0) { // Skip header column
+                        let select = cell.querySelector("select");
+                        let selectedIndex = select.selectedIndex;
+                        let selectedOption = select.options[selectedIndex];
+                        let value = selectedOption.text === "Yes" ? 1 : 0;
+                        tempAssoc2.push(value);
+		    }
+                });
+		tempAssoc.push(tempAssoc2);
+	}
+	associations3[indexOfClass] = tempAssoc;
+	console.log(associations3)
+}
+
+function CalculateRFC() {
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	const table = document.getElementById('methodsInteractionTable');
+	console.log(table.rows.length);
+
+	let coupling = [];
+	let CBO = 0;
+	
+	for (let i = 0 ; i < classes.length ; i++){
+		coupling.push(0);
+		for (let j = 0 ; j < table.rows.length-1 ; j++){
+			if (associations2[indexOfClass][j][i] == 1){
+				coupling[i] = 1;
+			}
+		}
+		CBO += coupling[i];
+	}
+	
+	console.log(coupling);
+	classes[indexOfClass].RFC = RFC;
+	console.log('RFC=' + RFC);
+	alert("RFC = " + RFC);
+	sessionSaveData();
+}
+
 // CBO Page
 
 function displayCBOTable(){
@@ -556,7 +619,6 @@ function CBOButton(){
 function SaveCBOTable() {
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	let attributes = classes[indexOfClass].attributes;
 	const table = document.getElementById('CBOTable');
 	
 	while(associations2.length < indexOfClass) {
