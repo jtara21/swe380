@@ -495,6 +495,8 @@ function SaveRFCTable() {
 	while(associations3.length < indexOfClass) {
 		associations3.push(0);
 	}
+
+	let tempAssoc = [];
 	
 	for (let i = 1 ; i < table.rows.length ; i++) {
 		
