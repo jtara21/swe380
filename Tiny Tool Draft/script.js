@@ -537,13 +537,14 @@ function CalculateCBO() {
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
 	const table = document.getElementById('CBOTable');
+	console.log(table.rows.length);
 
 	let coupling = [];
 	let CBO = 0;
 	
 	for (let i = 0 ; i < classes.length ; i++){
 		coupling.push(0);
-		for (let j = 0 ; j< table.rows.length ; j++){
+		for (let j = 0 ; j < table.rows.length ; j++){
 			if (associations2[indexOfClass][j][i] == 1){
 				coupling[i] = 1;
 			}
