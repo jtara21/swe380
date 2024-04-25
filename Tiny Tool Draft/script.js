@@ -501,30 +501,43 @@ function SaveRFCTable() {
 	for (let i = 1 ; i < table.rows.length ; i++) {
 
 		let row = table.rows[i];
-		let tempAssoc2 = [];
-		
-		/*let cells = row.querySelectorAll("td");
-                cells.forEach(function(cell, cellIndex) {
-                    if (cellIndex > 0) { // Skip header column
-                        let value = cell.value;
-                        tempAssoc2.push(value);
-		    }
-                });*/
-
 
 		for (let j = 1 ; j < classes[indexOfClass].methods.length+1 ; j++){
 			let methodInput = row.cells[j].getElementsByTagName('input')[0];
 			if(methodInput.value){			
-				tempAssoc2.push(methodInput.value);
+				tempAssoc.push(methodInput.value);
 			}
 		}
-		tempAssoc.push(tempAssoc2);
 	}
 	
 	associations3[indexOfClass] = tempAssoc;
 	console.log(associations3)
 }
 
+function CalculateRFC() {
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	const table = document.getElementById('methodsInteractionTable');
+
+	let response = [];
+	let RFC = 0;
+	
+	for (let i = 0 ; i < associations3[indexOfClass].length ; i++){
+		response.push(1);
+		for (let j = 0 ; j < i ; j++){
+			if (associations3[indexOfClass][i] == associations3[indexOfClass][j]){
+				response[i] = 0;
+			}
+		}
+		RFC += response[i];
+	}
+	
+	console.log(response);
+	classes[indexOfClass].RFC = RFC;
+	console.log('RFC=' + RFC);
+	alert("RFC = " + RFC);
+	sessionSaveData();
+}
 
 //RFC saving function
 /*function saveRFCData() {
@@ -559,31 +572,7 @@ function SaveRFCTable() {
    sessionStorage.setItem('RFCData_' + className, JSON.stringify(tempAssoc));
 }*/
 
-/*function CalculateRFC() {
-	const className = document.getElementById('classDropdown').value;
-	let indexOfClass = classes.findIndex(cls => cls.name === className);
-	const table = document.getElementById('methodsInteractionTable');
-	console.log(table.rows.length);
 
-	let coupling = [];
-	let CBO = 0;
-	
-	for (let i = 0 ; i < classes.length ; i++){
-		coupling.push(0);
-		for (let j = 0 ; j < table.rows.length-1 ; j++){
-			if (associations2[indexOfClass][j][i] == 1){
-				coupling[i] = 1;
-			}
-		}
-		CBO += coupling[i];
-	}
-	
-	console.log(coupling);
-	classes[indexOfClass].RFC = RFC;
-	console.log('RFC=' + RFC);
-	alert("RFC = " + RFC);
-	sessionSaveData();
-}*/
 
 // CBO Page
 
