@@ -517,6 +517,40 @@ function SaveRFCTable() {
 	console.log(associations3)
 }
 
+
+//RFC saving function
+/*function saveRFCData() {
+    const className = document.getElementById('classDropdown').value;
+    const table = document.getElementById('methodsInteractionTable');
+    let indexOfClass = classes.findIndex(cls => cls.name === className);
+    
+    // Ensure the index of class has an entry in associations
+    while (associations3.length <= indexOfClass) {
+        associations3.push([]); // Ensure each class has an array
+    }
+    
+    let tempAssoc = [];
+
+    // Start from 1 to skip the header row
+    for (let i = 1; i < table.rows.length; i++) {
+        let row = table.rows[i];
+        let methodInteractions = [];
+
+        // Skip the first cell which contains the method name
+        for (let j = 1; j < row.cells.length; j++) {
+            let input = row.cells[j].getElementsByTagName('input')[0];
+            let value = input.value; // Assume the value can be directly used (adjust if dropdowns or checkboxes)
+            methodInteractions.push(value);
+        }
+        tempAssoc.push(methodInteractions);
+    }
+
+    // Save the method interactions for the selected class
+    associations3[indexOfClass] = tempAssoc;
+    console.log('Saved RFC Data for', className, ':', associations3[indexOfClass]);
+   sessionStorage.setItem('RFCData_' + className, JSON.stringify(tempAssoc));
+}*/
+
 /*function CalculateRFC() {
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
@@ -692,5 +726,8 @@ window.onload = function() {
 	sessionLoadData();
 	if ((!window.location.href.includes('Home.html')) && (!window.location.href.includes('help.html'))){
 		updateClassDropdown();
+	}
+	if )window.location.href.includes('RFC.html'){
+		
 	}
 }
