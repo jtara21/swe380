@@ -446,21 +446,21 @@ function CalculateLCM() {
 //RFC page
 
 function updateMethodTable() {
-	const className = document.getElementById('classDropdown').value;
-	const selectedClass = classes.find(cls => cls.name === className);
-	if (!selectedClasss){
-		console.error('Selected class not found');
-		return;
-	}
-	
-    	// Update table headers with methods of the selected class
-   	const headersRow = document.getElementByID('methodHeaders');
-    	headersRow.innerHTML = '<th>Method Name</th>'; // Clear previous headers and add the 'Method Name' column
-    	selectedClass.methods.forEach(method => {
+    const className = document.getElementById('classDropdown').value;
+    const selectedClass = classes.find(cls => cls.name === className);
+    if (!selectedClass) {
+        console.error('Selected class not found');
+        return;
+    }
+
+    // Update table headers with methods of the selected class
+    const headersRow = document.getElementById('methodHeaders');
+    headersRow.innerHTML = '<th>Method Name</th>'; // Clear previous headers and add the 'Method Name' column
+    selectedClass.methods.forEach(method => {
         const th = document.createElement('th');
         th.textContent = method;
         headersRow.appendChild(th);
-    	});
+    });
 }
 
 function addRow() {
@@ -470,6 +470,7 @@ function addRow() {
     const methodNameCell = newRow.insertCell(0);
     const input = document.createElement('input');
     methodNameCell.textContent = `Method ${rowIndex}`;  // Set default method name based on the row count
+
     const numMethods = document.getElementById('methodHeaders').cells.length - 1;
     for (let i = 0; i < numMethods; i++) {
         const cell = newRow.insertCell(i + 1);
@@ -479,8 +480,6 @@ function addRow() {
         cell.appendChild(interactionInput);
     }
 }
-
-
 
 // CBO Page
 
