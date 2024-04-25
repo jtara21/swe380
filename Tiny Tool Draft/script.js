@@ -1,6 +1,7 @@
 let classes = [];
 let resultsDisplayed = false;
 let associations = [];
+let associations2 = [];
 
 //Home Page
 
@@ -445,10 +446,10 @@ function displayCBOTable(){
         let headerRow = header.insertRow();
 	let emptyCell = headerRow.insertCell();
         classes.forEach(function(cls) {
-                if (cls.name !== className) { // Exclude the selected class
+                //if (cls.name !== className) { // Exclude the selected class
                     let colHead = headerRow.insertCell();
                     colHead.textContent = cls.name; // Using class name for header, assuming you meant cls.name not attribute
-                }
+                //}
             });
 	
 	let body = table.createTBody();
@@ -486,12 +487,75 @@ function displayCBOTable(){
                         optionNo.text = "No";
                         select.add(optionNo);
                         newCell.appendChild(select);
-                let optionYes = document.createElement("option");
+                	let optionYes = document.createElement("option");
                         optionYes.text = "Yes";
                         select.add(optionYes);
                 }
             });
         
+}
+
+function CBOButton(){
+	SaveCBOTable();
+	CalculateCBO();
+}
+
+function SaveCBOTable() {
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	let attributes = classes[indexOfClass].attributes;
+	const table = document.getElementById('CBOTable');
+	
+	while(associations2.length < indexOfClass) {
+		associations2.push(0);
+	}
+	
+	let tempAssoc = [];
+	
+	for (let i = 1 ; i < table.rows.length ; i++) {
+		
+		let row = table.rows[i];
+		let tempAssoc2 = [];
+		
+		let cells = row.querySelectorAll("td");
+                cells.forEach(function(cell, cellIndex) {
+                    if (cellIndex > 0) { // Skip header column
+                        let select = cell.querySelector("select");
+                        let selectedIndex = select.selectedIndex;
+                        let selectedOption = select.options[selectedIndex];
+                        let value = selectedOption.text === "Yes" ? 1 : 0;
+                        tempAssoc2.push(value);
+		    }
+                });
+		tempAssoc.push(tempAssoc2);
+	}
+	associations2[indexOfClass] = tempAssoc;
+	console.log(associations2)
+}
+
+function CalculateCBO() {
+	const className = document.getElementById('classDropdown').value;
+	let indexOfClass = classes.findIndex(cls => cls.name === className);
+	const table = document.getElementById('CBOTable');
+
+	let coupling = [];
+	let CBO = 0;
+	
+	for (let i = 0 ; i < classes.length - 1 ; i++){
+		coupling.push(0);
+		for (let j = 0 ; j< table.row.length ; j++){
+			if (associations2[indexOfClass][j][i] == 1){
+				coupling i = 1;
+			}
+		}
+		CBO += coupling[i];
+	}
+	
+	console.log(coupling);
+	classes[indexOfClass].CBO = CBO;
+	console.log('CBO=' + CBO);
+	alert("CBO = " + CBO);
+	sessionSaveData();
 }
 
 
