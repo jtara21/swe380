@@ -496,7 +496,7 @@ function displayCBOTable(){
 
 function CBOButton(){
 	SaveCBOTable();
-	CalculateCBO();
+	//CalculateCBO();
 }
 
 function SaveCBOTable() {
