@@ -477,6 +477,7 @@ function addRow() {
         const cell = newRow.insertCell(i + 1);
         const interactionInput = document.createElement('input');
         interactionInput.type = 'text';
+	interactionInput.class = 'method-input';
         interactionInput.placeholder = 'Interaction details';
         cell.appendChild(interactionInput);
     }
@@ -499,17 +500,25 @@ function SaveRFCTable() {
 	let tempAssoc = [];
 	
 	for (let i = 1 ; i < table.rows.length ; i++) {
-		
+
 		let row = table.rows[i];
 		let tempAssoc2 = [];
 		
-		let cells = row.querySelectorAll("td");
+		/*let cells = row.querySelectorAll("td");
                 cells.forEach(function(cell, cellIndex) {
                     if (cellIndex > 0) { // Skip header column
                         let value = cell.value;
                         tempAssoc2.push(value);
 		    }
-                });
+                });*/
+
+
+		for (let j = 1 ; j < classes[indexOfClass].methods.length ; j++){
+			let methodInput = row.cells[j].getElementsByClassName('method-input')[0];
+			if(methodInput.value){			
+				tempAssoc2.push(methodInput.value);
+			}
+		}
 		tempAssoc.push(tempAssoc2);
 	}
 	
