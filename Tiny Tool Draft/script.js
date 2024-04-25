@@ -437,14 +437,9 @@ function CalculateLCM() {
 
 //RFC page
 
-function displayRFCTable() {
+function updateMethodTable() {
 	const className = document.getElementById('classDropdown').value;
 	const selectedClass = classes.find(cls => cls.name === className);
-	const table = document.getElementById('RFCTable');
-	
-	while(table.rows.length>0){
-		table.deleteRow(0);
-	}
 	
     	// Update table headers with methods of the selected class
    	const headersRow = document.getElementByID('methodHeaders');
@@ -457,7 +452,7 @@ function displayRFCTable() {
 }
 
 function addRow() {
-    const tableBody = document.getElementById('RFCTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('methodsInteractionTable').getElementsByTagName('tbody')[0];
     const newRow = tableBody.insertRow();
     const rowIndex = tableBody.rows.length;// to get the index of the row
     const methodNameCell = newRow.insertCell(0);
