@@ -45,10 +45,14 @@
                 call that method. Also, some versions of this metric will go even deeper, including methods called by 
                 methods called by the methods of the class in question. This tool won't do this.)</p>
             
-                <label for="classDropdown">Select Class:</label>
-                <select id="classDropdown" onchange="displayRFCTable()">
-                    <!-- Class options will be populated dynamically -->
-                </select>
+                <form id="classForm">
+                    <label for="selectedClass">Select Class:</label>
+                    <br>
+                    <select id="classDropdown" name="selectedClass" onchange="displayCBOTable()">
+                     <!-- Class options added by JavaScript -->
+                    </select>
+                    <br><br>
+                </form>
             
                 <button onclick="addRow()">Add Method</button>
             
