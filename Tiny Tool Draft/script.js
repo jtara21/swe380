@@ -727,7 +727,7 @@ window.onload = function() {
 	if ((!window.location.href.includes('Home.html')) && (!window.location.href.includes('help.html'))){
 		updateClassDropdown();
 	}
-	if )window.location.href.includes('RFC.html'){
+	/*if )window.location.href.includes('RFC.html'){
 		
-	}
+	}*/
 }
