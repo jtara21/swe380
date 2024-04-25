@@ -506,7 +506,7 @@ function SaveRFCTable() {
 		let cells = row.querySelectorAll("td");
                 cells.forEach(function(cell, cellIndex) {
                     if (cellIndex > 0) { // Skip header column
-                        let value = cell.textContent;
+                        let value = cell.value;
                         tempAssoc2.push(value);
 		    }
                 });
