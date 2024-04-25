@@ -65,17 +65,17 @@
             <br>
             <p>2) The second step is to add methods and attributes for each of your classes. Four of the six CK Metrics 
                 will require your classes to have methods and attributes. To do this, head to the Methods and Attributes 
-                Page. Select a class from the dropdown menu, then click "Add Method" or "Add Attribute" and type in 
-                method or attribute names into the boxes that appear. Do this for each of your classes, then click "Save".</p>
+                Page. Select a class from the dropdown menu, then click "Add New Row" and type in method and attribute 
+                names into the boxes that appear. Click "Save Data", then repeat this for each of your classes.</p>
             <br>
             <p>3a) The third step is to input information for the remaining four CK Metrics. You can do this in any order, 
                 but if you want to follow this tutorial, head to the Weighted Methods per Class Page. If you want to make 
-                calculating this metric very easy, you can simply click "Calculate" for each of your classes selected and 
-                move on to the next metric. If you want to calculate the more advanced version of this metric, click " Enable 
+                calculating this metric very easy, you can simply select each of your classes and click "Calculate WMC", then 
+                move on to the next metric. If you want to calculate the more advanced version of this metric, click "Enable 
                 Complex Calculation". A table will show each of your class's methods, a dropdown menu to select a different 
                 class, along with a column where you can input the methods' cyclomatic complexities. You'll have to find these 
                 cyclomatic complexities yourself, and how you calculate cyclomatic complexity is explained on the page for this 
-                metric. Determine and input the complexities for the methods of the class, then click "Calculate". You'll see 
+                metric. Determine and input the complexities for the methods of the class, then click "Calculate WMC". You'll see 
                 analysis of this metric on the home page. Select a new class and repeat this process for each of your classes, 
                 then proceed to the next metric.</p>
             <br>
@@ -84,18 +84,22 @@
                 which class you'll be working with. For your first class, think of its methods. Which attributes of that class 
                 does each particular method utilize? Each cell of the table is a dropdown box marked "No". Click that box and 
                 switch the selection to "Yes" if the method for that row utilizes the attribute of that column. When you're 
-                satisfied with the connections between methods and attributes for this class, click "Calculate" to display its 
+                satisfied with the connections between methods and attributes for this class, click "Calculate LCM" to display its 
                 Lack of Cohesion of Methods. Again, we'll see analysis of these metrics on the home page. Select a new class and 
                 repeat this step for each of of your classes, then proceed to the next metric.</p>
             <br>
             <p>3c) For our next metric, head to the Response for a Class Page. Here you'll see a table of each of your class's 
-                methods, a dropdown menu to select which class you'll be working with, and a </p>
+                methods as the columns, a dropdown menu to select which class you'll be working with, and a button labeled "Add Method".
+                For your first class, think of its methods. Think of which methods from throughout your entire program those classes call.
+                Use the "Add Method" button to add rows to the table, then type the called methods for each of the selected class's methods 
+                into the text input boxes that appear. When you're satisfied, click "Calculate RFC" to display the selected class's Response 
+                for a Class. Select a new class and repeat this step for each of of your classes, then proceed to the next metric.</p>
             <br>
             <p>3d) For our final metric, head to the Coupling Between Objects Page. Here you'll see two tables with each of your 
                 class's methods or attributes as the rows and each of your other classes as the columns, with a dropdown menu 
                 to select which class you'll be working with. The cells of each table contain dropdown boxes marked "No". For each 
                 of these cells, click them and select "Yes" if the method/attribute of that row collaborates with the class of that 
-                column. The page has a description of what collaboration is. Click "Calculate" when you're satisfied with the current 
+                column. The page has a description of what collaboration is. Click "Calculate CBO" when you're satisfied with the current 
                 collaborations for this class, then repeat the process for each other class.</p>
             <br>
             <p>4) For your final step, head to the Home Page. All you've got to do is click "Display Results", and all of your 
