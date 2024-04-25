@@ -48,7 +48,7 @@
                 <form id="classForm">
                     <label for="selectedClass">Select Class:</label>
                     <br>
-                    <select id="classDropdown" name="selectedClass" onchange="displayCBOTable()">
+                    <select id="classDropdown" name="selectedClass" onchange="updateMethodTable()">
                      <!-- Class options added by JavaScript -->
                     </select>
                     <br><br>
@@ -56,7 +56,7 @@
             
                 <button onclick="addRow()">Add Method</button>
             
-                <table id="RFCTable">
+                <table id="methodsInteractionTable">
                     <thead>
                         <tr id="methodHeaders">
                             <!-- Method headers will be added dynamically -->
