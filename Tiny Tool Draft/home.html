@@ -77,32 +77,35 @@
 		<br><br>
 		<p>When you click "Display Results", some of the cells of your table may be highlighted. If they are, that means
 			you have a concern that could use addressing. The way you address the concern depends on the particular 
-			metric that is causing the concern, so follow these suggestions to improve the design of your program.</p>
+			metric that is causing the concern, so follow these suggestions to improve the design of your program.
+			These highlights are based on a medium sized system, so if your system is large, you may see more highlights 
+			than you actuall need, and if your system is small, you may not see highlights where you still should make changes. 
+			Adjust your analysis accordingly.</p>
 		 <br>
-		 <p>If a cell in the Depth of Inheritance row is highlighted, that means you've created a chain of class inheritance 
+		 <p>(DIT>5) If a cell in the Depth of Inheritance row is highlighted, that means you've created a chain of class inheritance 
 		 	that's too long. You can remedy this by splitting some of your inheritance trees apart, or by turning some 
 		 	of your child classes into root classes. Interesting note, it's usually the classes in the middle of the 
 		 	inheritance tree that pose the most issues, not those deepest in the tree.</p>
 		 <br>
-		 <p>If a cell in the Number of Children row is highlighted, that means that that class has too many children. Consider 
+		 <p>(NOC>8) If a cell in the Number of Children row is highlighted, that means that that class has too many children. Consider 
 		 	changing up some of its children so they can stand on their own without inheriting from the parent class.</p>
 		 <br>
-		 <p>If a cell in the Weighted Methods per Class row is highlighted, that means your class is too complex. Veer too far
+		 <p>(WMC>30) If a cell in the Weighted Methods per Class row is highlighted, that means your class is too complex. Veer too far
 			in this direction and you'll get what we call a "god class". Consider giving some of this class's functionality 
 		 	to other classes.</p>
 		 <br>
-		 <p>If a cell in the Lack of Cohesion of Methods row is highlighted, that means one of two things. Either LCM for this 
+		 <p>(LCM=/=1) If a cell in the Lack of Cohesion of Methods row is highlighted, that means one of two things. Either LCM for this 
 		 	class is 0 because it has no methods, or LCM for this class is greater than one, which means this class serves 
 		 	multiple purposes which are entirely independent of each other. You can remedy this by splitting the class into 
 		 	a number of smaller classes equal to its LCM score.</p>
 		 <br>
-		 <p>If a cell in the Reponse for a Class row is highlighted, that means your class calls on a lot of methods. This one 
+		 <p>(RFC>40) If a cell in the Reponse for a Class row is highlighted, that means your class calls on a lot of methods. This one 
 		 	is a lot less simple to remedy, but you could go one of two ways. You could split the class into smaller classes 
 			that individually have less calling to do, but then you run the risk of too many classes. Or you could make each 
 		 	method for the class more comphrehensive so that they require less other methods called to function, but then you 
 		 	risk your cyclomatic complexities and WMC metric getting too large.</p>
 		 <br>
-		 <p>If a cell in the Coupling Between Objects row is highlighted, that means your class is collaborating with a lot of your 
+		 <p>(CBO>14) If a cell in the Coupling Between Objects row is highlighted, that means your class is collaborating with a lot of your 
 		 	other classes. If it collaborates with particular classes a lot, you might consider combining those into one class. If 
 		 	it collaborates with many classes only a little each, you might consider splitting the class into multiple smaller classes.</p>
 		 
