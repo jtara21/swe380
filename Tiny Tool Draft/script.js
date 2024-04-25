@@ -153,7 +153,6 @@ function removeClass() {
 }
 
 
-
 //Methods and Attributes Page
 
 // General function to add method and attribute
