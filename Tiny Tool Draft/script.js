@@ -462,7 +462,9 @@ function CalculateLCM() {
 	sessionSaveData();
 }
 
+
 // CBO Page
+
 function displayCBOTable(){
 	const className = document.getElementById('classDropdown').value;
 	let indexOfClass = classes.findIndex(cls => cls.name === className);
@@ -527,7 +529,10 @@ function displayCBOTable(){
         
 }
 
+
+
 //Help Page 
+
 document.querySelectorAll('.help-nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -545,37 +550,3 @@ window.onload = function() {
 		updateClassDropdown();
 	}
 }
-
-
-/*
-//retrieve data
-function loadMethodsFromSession() {
-    const savedData = JSON.parse(sessionStorage.getItem('wmcData'));
-    if (savedData && savedData.methods && savedData.methods.length > 0) {
-        savedData.methods.forEach(entry => {
-            addMethodToTable(entry.methodName, entry.complexity);
-        });
-        document.getElementById('totalWMC').textContent = 'Total WMC: ' + savedData.totalWMC;
-        document.getElementById('enableComplex').checked = savedData.isComplex;
-        toggleComplexityInputs(); // Ensure inputs are correctly enabled/disabled based on saved state
-    }
-}
-
-function addMethodToTable(methodName) {
-    const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
-    const newRow = tableBody.insertRow();
-    const methodNameCell = newRow.insertCell(0);
-    const complexityCell = newRow.insertCell(1);
-    methodNameCell.textContent = methodName;
-    complexityCell.textContent = '-';  // Placeholder for complexity
-}
-
-function addMethodToTable(methodName, complexity = 0) {
-    const tableBody = document.getElementById('methodsTable').getElementsByTagName('tbody')[0];
-    const newRow = tableBody.insertRow();
-    const methodNameCell = newRow.insertCell(0);
-    const complexityCell = newRow.insertCell(1);
-    methodNameCell.textContent = methodName;
-    complexityCell.innerHTML = `<input type="number" class="complexity-input" value="${complexity}" min="0" disabled>`;
-}
-*/
