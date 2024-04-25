@@ -435,6 +435,50 @@ function CalculateLCM() {
 
 
 
+//RFC page
+
+function displayeRFCTable() {
+	const className = document.getElementById('classDropdown').value;
+	const selectedClass = classes.find(cls => cls.name === className);
+	const table = document.getElementById('RFCTable');
+	
+	while(table.rows.length>0){
+		table.deleteRow(0);
+	}
+	
+    	// Update table headers with methods of the selected class
+   	 const headersRow = document.getElementById('methodHeaders');
+    	headersRow.innerHTML = '<th>Method Name</th>'; // Clear previous headers and add the 'Method Name' column
+    	selectedClass.methods.forEach(method => {
+        const th = document.createElement('th');
+        th.textContent = method;
+        headersRow.appendChild(th);
+    	});
+}
+
+function addRow() {
+    const tableBody = document.getElementById('methodsInteractionTable').getElementsByTagName('tbody')[0];
+    const newRow = tableBody.insertRow();
+    const rowIndex = tableBody.rows.length;// to get the index of the row
+    const methodNameCell = newRow.insertCell(0);
+    const input = document.createElement('input');
+    methodNameCell.textContent = `Method ${rowIndex}`;  // Set default method name based on the row count
+   // input.type = 'text';
+    //input.placeholder = 'Enter method name';
+    //methodNameCell.appendChild(input);
+
+    const numMethods = document.getElementById('methodHeaders').cells.length - 1;
+    for (let i = 0; i < numMethods; i++) {
+        const cell = newRow.insertCell(i + 1);
+        const interactionInput = document.createElement('input');
+        interactionInput.type = 'text';
+        interactionInput.placeholder = 'Interaction details';
+        cell.appendChild(interactionInput);
+    }
+}
+
+
+
 // CBO Page
 
 function displayCBOTable(){
@@ -565,47 +609,6 @@ function CalculateCBO() {
 	alert("CBO = " + CBO);
 	sessionSaveData();
 }
-
-//RFC page
-function updateMethodTable() {
-    const className = document.getElementById('classDropdown').value;
-    const selectedClass = classes.find(cls => cls.name === className);
-    if (!selectedClass) {
-        console.error('Selected class not found');
-        return;
-    }
-
-    // Update table headers with methods of the selected class
-    const headersRow = document.getElementById('methodHeaders');
-    headersRow.innerHTML = '<th>Method Name</th>'; // Clear previous headers and add the 'Method Name' column
-    selectedClass.methods.forEach(method => {
-        const th = document.createElement('th');
-        th.textContent = method;
-        headersRow.appendChild(th);
-    });
-}
-
-function addRow() {
-    const tableBody = document.getElementById('methodsInteractionTable').getElementsByTagName('tbody')[0];
-    const newRow = tableBody.insertRow();
-    const rowIndex = tableBody.rows.length;// to get the index of the row
-    const methodNameCell = newRow.insertCell(0);
-    const input = document.createElement('input');
-    methodNameCell.textContent = `Method ${rowIndex}`;  // Set default method name based on the row count
-   // input.type = 'text';
-    //input.placeholder = 'Enter method name';
-    //methodNameCell.appendChild(input);
-
-    const numMethods = document.getElementById('methodHeaders').cells.length - 1;
-    for (let i = 0; i < numMethods; i++) {
-        const cell = newRow.insertCell(i + 1);
-        const interactionInput = document.createElement('input');
-        interactionInput.type = 'text';
-        interactionInput.placeholder = 'Interaction details';
-        cell.appendChild(interactionInput);
-    }
-}
-
 
 
 
