@@ -4,6 +4,7 @@
 <title>Response for a Class</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width", initial-scale="1.0">
+<!--<meta name="description" content="Home page. Our Agency is here to show you how amazing is Senegal as a country. It really is a great place for tourism. ">-->
 <link rel="stylesheet" type="text/css" href="main_style.css"/>
 <script src="script.js"></script>
 <body>
@@ -44,28 +45,25 @@
                 call that method. Also, some versions of this metric will go even deeper, including methods called by 
                 methods called by the methods of the class in question. This tool won't do this.)</p>
             
-            <div id="methodsAttributes">
-                <form id="classForm">
-                    <label for="selectedClass">Select Class:</label>
-                    <br>
-                    <select id="classDropdown" name="selectedClass">
-                        <!-- Class options added by JavaScript -->
-                    </select>
-                    <br><br>
-                </form>
-                
-                 <div id="methodsList">
-                    <h3>Methods</h3>
-                    <!-- Method inputs added by JavaScript -->
-                    <button type="button" onclick="addMethod()">+ Add Method</button>
-                </div>
-        
-                <div id="attributesList">
-                     <h3>Attributes</h3>
-                    <!-- Attribute inputs added by JavaScript -->
-                    <button type="button" onclick="addAttribute()">+ Add Attribute</button>
-                </div>
-            </div>
+                <label for="classDropdown">Select Class:</label>
+                <select id="classDropdown" onchange="updateMethodTable()">
+                    <!-- Class options will be populated dynamically -->
+                </select>
+            
+                <button onclick="addRow()">Add Method</button>
+            
+                <table id="methodsInteractionTable">
+                    <thead>
+                        <tr id="methodHeaders">
+                            <!-- Method headers will be added dynamically -->
+                            <th>Method Name</th> <!-- Static column header for method names -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- User added rows will appear here -->
+                    </tbody>
+                </table>
+                <script src="script.js"></script>
     </main>
     </div>
 </body>
