@@ -484,7 +484,7 @@ function addRow() {
 
 function RFCButton(){
 	SaveRFCTable();
-	//CalculateRFC();
+	CalculateRFC();
 }
 
 function SaveRFCTable() {
