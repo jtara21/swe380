@@ -437,7 +437,7 @@ function CalculateLCM() {
 
 //RFC page
 
-function displayeRFCTable() {
+function displayRFCTable() {
 	const className = document.getElementById('classDropdown').value;
 	const selectedClass = classes.find(cls => cls.name === className);
 	const table = document.getElementById('RFCTable');
