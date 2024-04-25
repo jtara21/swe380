@@ -23,36 +23,64 @@ function displayResults() {
         headerRow.appendChild(th);
     }
 
-
     // Add new data cells (td) for each class in the array
     for (let j = 0; j < classes.length; j++) {
+		let metricDIT = parseInt(classes[j].depth);
         let td = document.createElement('td');
         td.innerHTML = classes[j].depth;
+		if(metricDIT > 5){
+			td.bgColor = '#F7B6B6';
+		}
         table.rows[1].appendChild(td);
     }
+	
 	for (let j = 0; j < classes.length; j++) {
+		let metricNOC = parseInt(classes[j].numberOfChildren);
         let td = document.createElement('td');
         td.innerHTML = classes[j].numberOfChildren;
+		if(metricNOC > 8){
+			td.bgColor = '#F7B6B6';
+		}
         table.rows[2].appendChild(td);
     }
+	
 	for (let j = 0; j < classes.length; j++) {
+		let metricWMC = parseInt(classes[j].WMC);
         let td = document.createElement('td');
         td.innerHTML = classes[j].WMC;
+		if(metricWMC > 30){
+			td.bgColor = '#F7B6B6';
+		}
         table.rows[3].appendChild(td);
     }
+	
 	for (let j = 0; j < classes.length; j++) {
+		let metricLCM = parseInt(classes[j].LCM);
         let td = document.createElement('td');
         td.innerHTML = classes[j].LCM;
+		if(metricLCM != 1){
+			td.bgColor = '#F7B6B6';
+		}
         table.rows[4].appendChild(td);
     }
+	
 	for (let j = 0; j < classes.length; j++) {
+		let metricRFC = parseInt(classes[j].RFC);
         let td = document.createElement('td');
         td.innerHTML = classes[j].RFC;
+		if(metricRFC > 40){
+			td.bgColor = '#F7B6B6';
+		}
         table.rows[5].appendChild(td);
     }
+	
 	for (let j = 0; j < classes.length; j++) {
+		let metricCBO = parseInt(classes[j].CBO);
         let td = document.createElement('td');
         td.innerHTML = classes[j].CBO;
+		if(metricCBO > 14){
+			td.bgColor = '#F7B6B6';
+		}
         table.rows[6].appendChild(td);
     }
 	
