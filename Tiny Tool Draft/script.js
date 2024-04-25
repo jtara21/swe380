@@ -713,7 +713,7 @@ function CalculateCBO() {
 	console.log(table.rows.length);
 
 	let coupling = [];
-	let CBO = 0;
+	let CBO = -1;
 	
 	for (let i = 0 ; i < classes.length ; i++){
 		coupling.push(0);
